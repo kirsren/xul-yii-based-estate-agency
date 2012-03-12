@@ -1,0 +1,53 @@
+
+<!-- start item -->
+<x:hbox>
+    
+    <x:hbox>
+    <?php echo Xul::image($data->getFileUrl(),'Image'); ?>
+    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <?php echo Xul::link(Xul::encode($data->name), array('view', 'id'=>$data->id)); ?>
+    	</x:hbox>
+    
+        <x:hox>
+    	<?php echo Xul::encode($data->getAttributeLabel('description')); ?>:
+    	<?php echo Xul::encode($data->description); ?>
+    	</x:hox>
+        
+    	<x:hbox>
+        <?php echo Xul::encode($data->getAttributeLabel('price')); ?>: <?php echo Xul::encode($data->price); ?>
+    	</x:hbox>
+    
+        <x:hbox>
+    	<?php echo Xul::encode($data->getAttributeLabel('rooms')); ?>: <?php echo Xul::encode($data->rooms); ?>
+    	</x:hbox>
+    
+    	<x:hbox>
+        <?php echo Xul::encode($data->getAttributeLabel('heating')); ?>: <?php echo Xul::encode($data->heating); ?>
+        </x:hbox>
+    	
+        <x:hbox>
+    	<?php echo Xul::encode($data->getAttributeLabel('type')); ?>: <?php echo Xul::encode($data->type); ?>
+        </x:hbox>
+        
+    	<?php /*
+    	<b><?php echo Xul::encode($data->getAttributeLabel('city')); ?>:</b>
+    	<?php echo Xul::encode($data->city); ?>
+    	
+    
+    	<b><?php echo Xul::encode($data->getAttributeLabel('address')); ?>:</b>
+    	<?php echo Xul::encode($data->address); ?>
+    	
+    
+    	<b><?php echo Xul::encode($data->getAttributeLabel('agent')); ?>:</b>
+    	<?php echo Xul::encode($data->agent); ?>
+    	
+    
+    	<b><?php echo Xul::encode($data->getAttributeLabel('client')); ?>:</b>
+    	<?php echo Xul::encode($data->client); ?>
+    	*/ ?>
+     </x:vbox>
+ </x:hbox>
+ <!-- end item -->

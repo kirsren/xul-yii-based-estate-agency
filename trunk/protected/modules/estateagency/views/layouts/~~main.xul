@@ -1,0 +1,30 @@
+<?php
+  echo Xul::defaultXULHead();
+  Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/screen.css');
+  Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/form.css');
+  Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/main.css');
+?>
+<xul:window title="Test module"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+
+<xul:vbox align=>
+
+	<h1><?php echo Xul::encode(Yii::app()->name); ?></h1>
+
+	<xul:hbox>
+		<?php $this->widget('zii.widgets.CMenu',array(
+			'items'=>array(
+				array('label'=>'Home', 'url'=>array('/')),			
+				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+			),
+		)); ?>
+	</xul:hbox>
+    
+	<?php echo $content; ?>
+    
+	<?php echo Xul::xtag('hbox', array('pack'=>'center'), date('Y')." by LZs \n".Yii::powered()); ?>
+
+</xul:vbox>
+</xul:window>
