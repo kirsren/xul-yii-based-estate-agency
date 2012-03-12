@@ -1,0 +1,5 @@
+<?php
+  echo '<?xml version="1.0"?>'."\n";
+  echo '<?xml-stylesheet href="chrome://global/skin" type="text/css"?>'."\n";
+  echo $content;
+?>

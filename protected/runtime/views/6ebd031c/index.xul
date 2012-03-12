@@ -1,0 +1,14 @@
+<?php
+
+$this->menu=array(
+	array('label'=>'Create Estate', ),
+	array('label'=>'Manage Estate', ),
+);
+?>
+
+<?php $this->widget('ext.xul.widgets.XulListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'_view',
+    'separator'=> '<hr />',
+    'xulOptions'=>array('flex'=>'1')
+)); ?>

@@ -1,0 +1,277 @@
+body {
+    margin:0;
+    padding:0;
+	background-image:url('images/bg2.jpg');
+    background-attachment:fixed;
+    /*background:#291e1e;*/  
+	font-family: 'Century Gothic',arial, sans-serif;
+    font-size: 13px;
+    color:#f5f5f5;
+}
+
+input, textarea{
+    font-family: 'Century Gothic',arial, sans-serif;
+    font-size: 13px;
+    color:#f5f5f5;
+    /*background-image:url('images/bg2.jpg');*/
+    background:none;
+    border:1px #e5e5e5 dotted;
+}
+
+textarea{
+    width:100%;
+}
+
+fieldset{
+    border:1px #e5e5e5 dotted;
+    display:inline;
+}
+
+legend{
+   font-family: 'Century Gothic',arial, sans-serif;
+   font-size: 13px;
+   font-weight:bold;
+   color:#f5f5f5; 
+}
+
+#big{
+  border-left: 3px #e5e5e5 dotted;
+  width:804px;  
+	padding-left: 10px;
+	padding-right: 10px;
+            }
+            
+#content, #head{
+     width:800px;
+}            
+
+            #headbg{
+  height:185px;
+  width:100%;
+  position:fixed;
+  z-index:1;
+  background-image:url('images/bg2.jpg');
+  background-attachment:fixed;
+            }
+#headbg2{
+  height:190px;
+  width:100%;
+  position:relative;
+  z-index:0;
+            }
+#head{		
+     width:800px;
+   height:200px;
+     background-image:url('images/head.png');
+   background-repeat:no-repeat;
+   position:fixed;
+   z-index:10;
+   top:0;
+   margin-left:-400px;
+  left:50%;   
+	color: #e2cba4;
+  padding-top:10px;
+  
+}
+            
+            #logos{
+  position:fixed;
+  top:10px;
+  left:10px;
+  z-index:50;
+            }
+            #logos a{
+  display:block;
+            }
+            #logos a:hover{
+  padding-left:10px;
+            }            
+            
+            #logos a img{
+  width:60px;
+  margin-bottom:8px;
+  border:0px white solid;
+            }
+            
+            
+            #head a{
+  font-family:'Century Gothic';
+  font-weight:normal;
+  text-decoration: none;
+  /*color:#e5e5e5;*/
+  color:#c4c4c4;
+  font-size:3em;
+  letter-spacing:0.1em;  
+            }
+            #head a:hover{
+  /*text-decoration:underline;*/
+  color:#e6e6e6;
+            }
+            
+            .active{
+  font-family:'Century Gothic';
+  font-weight:normal;
+  text-decoration: none;
+  color:#e5e5e5;
+  /*color:#c4c4c4;*/
+  font-size:3em;
+}
+
+#content {
+    width:780px;
+    position:relative;
+    z-index:0;
+    text-align:justify;
+	padding:10px 20px 20px 10px;	
+}
+			
+			#footer{
+			     border-top:3px #e5e5e5 dotted;
+                 margin-left:0px;
+				font-size:0.8em;
+			}
+            
+            img#evolution{
+                width:150px;
+                           
+            }
+            img#leftmonkey{
+                position:fixed;
+                top:300px;
+                right:0px;
+                z-index:0;
+            }
+            /* Oldalak */
+            ul#tagok li{
+                list-style-type:none;
+                display:block;
+                padding:10px 3px;
+                margin:20px 1px 20px 1px;
+            }
+            ul#tagok li img{
+                width:90px;
+                float:left;
+                padding:0px;                
+                border-top: 4px white solid;
+                border-right: 4px white solid;
+                border-left: 4px white solid;
+                border-bottom: 12px white solid;
+                margin-right:3px;               
+            }
+            ul#tagok li b{
+                font-weight:bold;
+                font-size:1.1em;
+                display:block;
+            }
+            
+#programok {
+    width:100%;
+    padding:10px 3px;
+    text-align:center;
+    
+}
+
+#programok span{ 
+    padding:10px 10px;
+    display: inline-block;
+    text-align:center;
+}
+
+#programok img{
+    width:300px;              
+    border-top: 4px white solid;
+    border-right: 4px white solid;
+    border-left: 4px white solid;
+    border-bottom: 12px white solid;
+             
+}
+
+#programok  b{
+    font-weight:bold;
+    font-size:1.1em;    
+}
+#programok a{
+    font-family: 'Century Gothic',arial, sans-serif;
+    font-size: 13px;
+    color:#f5f5f5;
+    text-decoration:none;
+}
+         
+.galeries li{
+	list-style-type: none;	
+}
+
+.galeries li a{
+	text-decoration:none;
+	color: white;
+	font-weight:bold;
+
+}
+
+div.galeries span{
+    margin: 20px;
+}
+
+div.galeries span a img{
+    display:inline;
+        width:300px;              
+    border-top: 4px white solid;
+    border-right: 4px white solid;
+    border-left: 4px white solid;
+    border-bottom: 12px white solid;
+    
+}
+div.galeries span a{
+    text-align:center;
+    color:white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#naptar h4 a{
+    font-size:14px; font-weight: bold;
+}
+
+#naptar h4 a span{
+    font-size: 10px;
+}
+
+#naptar .leiras{
+    font-size: 12px;
+}
+
+
+#naptar .plakat {
+    width:100%;
+    padding:10px 3px;
+    text-align:center;
+    
+}
+
+#naptar .plakat span{ 
+    padding:10px 10px;
+    display: inline-block;
+    text-align:center;
+}
+
+#naptar .plakat a img{
+    width:150px;              
+    border-top: 4px white solid;
+    border-right: 4px white solid;
+    border-left: 4px white solid;
+    border-bottom: 12px white solid;
+             
+}
+
+#naptar .plakat a  b{
+    font-weight:bold;
+    font-size:1.1em;    
+}
+#naptar .plakatk a{
+    font-family: 'Century Gothic',arial, sans-serif;
+    font-size: 13px;
+    color:#f5f5f5;
+    text-decoration:none;
+}
+
+
