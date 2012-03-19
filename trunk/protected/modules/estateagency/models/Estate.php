@@ -15,6 +15,8 @@
  * @property string $address
  * @property integer $agent
  * @property integer $client
+ * @property datetime $created
+ * @property datetime $modified
  */
 class Estate extends CActiveRecord
 {
@@ -50,10 +52,17 @@ class Estate extends CActiveRecord
 			array('name, city, address', 'length', 'max'=>255),
 			array('heating', 'length', 'max'=>20),
 			array('type', 'length', 'max'=>10),
+            array('modified','default',
+                  'value'=>new CDbExpression('NOW()'),
+                  'setOnEmpty'=>false,'on'=>'update'),
+            array('created,modified','default',
+                  'value'=>new CDbExpression('NOW()'),
+                  'setOnEmpty'=>false,'on'=>'insert'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, name, description, price, rooms, heating, type, city, address, agent, client', 'safe', 'on'=>'search'),
             array('image', 'file', 'types' => 'png, jpg', 'allowEmpty' => true), // behavior
+
 		);
 	}
     

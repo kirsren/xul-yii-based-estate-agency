@@ -37,8 +37,8 @@ class YumUserRecoveryForm extends YumFormModel {
 		if(!$this->hasErrors())  // we only want to authenticate when no input errors
 		{
 			if (strpos($this->login_or_email,"@")) {
-				$user = YumUser::model()->findByAttributes(array(
-							'email'=>$this->login_or_email));
+				$user = YumUser::model()->with('profile')->findByAttributes(array(
+							'profile.email'=>$this->login_or_email));
 			} else {
 				$user = YumUser::model()->findByAttributes(array(
 							'username'=>$this->login_or_email));
