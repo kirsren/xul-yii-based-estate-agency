@@ -8,13 +8,16 @@
 
 <x:window title="Estate agency"
         id="mainwindow"
+        centerscreen="true"
+        width="1200"
+        height="800"
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
 
 <x:hbox id="header">
     <x:label flex="1" class="title"><?php echo Yii::app()->name; ?></x:label>
     <x:box>
-        <?php echo Xul::link('Logout', array('/site/logout')); ?>
+        <?php echo Xul::link('Logout', array('#'), array('id'=>'loginLink')); ?>
     </x:box>
 </x:hbox>
 
@@ -38,10 +41,12 @@
     <x:splitter collapse="before" resizebefore="closest" resizeafter="grow">
      <x:grippy />
     </x:splitter>
-
-    <x:iframe id="content" src="<?php echo $this->createUrl('/estateagency/estate'); ?>" flex="1" >
-        <x:description>Töltés...</x:description>
-    </x:iframe>
+    
+    <x:groupbox flex="1"> 
+        <x:iframe id="content" src="<?php echo $this->createUrl('/estateagency/estate'); ?>" flex="1" >
+            <x:description>Töltés...</x:description>
+        </x:iframe>
+    </x:groupbox>
 
   </x:hbox>
   

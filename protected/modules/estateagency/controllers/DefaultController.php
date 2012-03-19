@@ -12,7 +12,7 @@ class DefaultController extends EAController
 				'users'=>array('*'),
 			),
             array('allow', 
-				'actions'=>array('create','update','view','delete'),
+				'actions'=>array('create','update','view','delete', 'testdialog'),
 				'roles'=>array('agent')
 			),
             array('allow',
@@ -33,4 +33,17 @@ class DefaultController extends EAController
         $this->layout = 'embededWindow';
 		$this->render('index');
 	}
+    
+    public function actionTestdialog(){
+        $this->layout = 'dialog';
+        $this->render('index');
+    }
+    
+    public function actionInitxul(){
+        $ret = array(
+            'firstxul'=>$this->createAbsoluteUrl('/estateagency'),
+            'secondxul'=>$this->createAbsoluteUrl('/user/user/login'),
+        );
+        echo CJSON::encode($ret);
+    }
 }

@@ -79,29 +79,29 @@ class YumUser extends YumActiveRecord
 
 	public function relations()
 	{
-    if (isset(Yii::app()->controller->module->userRoleTable))
-      $this->_userRoleTable = Yii::app()->controller->module->userRoleTable;
-    elseif (isset(Yii::app()->modules['user']['userRoleTable'])) 
-      $this->_tableName = Yii::app()->modules['user']['userRoleTable'];
-    else
-      $this->_userRoleTable = 'user_has_role';
-
-    if (isset(Yii::app()->controller->module->userUserTable))
-      $this->_userUserTable = Yii::app()->controller->module->userUserTable;
-    elseif (isset(Yii::app()->modules['user']['userUserTable'])) 
-      $this->_tableName = Yii::app()->modules['user']['userUserTable'];
-    else
-      $this->_userUserTable = 'user_has_user';
-      
-    // resolve table names to use them in relations definition
-    $relationUHRTableName=YumHelper::resolveTableName($this->_userRoleTable,$this->getDbConnection());      
-    $relationUHUTableName=YumHelper::resolveTableName($this->_userUserTable,$this->getDbConnection());
-
-	return array(
-		'profile'=>array(self::HAS_MANY, 'YumProfile', 'user_id', 'order' => 'profile.profile_id DESC'),
-		'roles'=>array(self::MANY_MANY, 'YumRole', $relationUHRTableName . '(user_id, role_id)'),
-		'users'=>array(self::MANY_MANY, 'YumUser', $relationUHUTableName . '(owner_id, child_id)'),
-	);
+        if (isset(Yii::app()->controller->module->userRoleTable))
+          $this->_userRoleTable = Yii::app()->controller->module->userRoleTable;
+        elseif (isset(Yii::app()->modules['user']['userRoleTable'])) 
+          $this->_tableName = Yii::app()->modules['user']['userRoleTable'];
+        else
+          $this->_userRoleTable = 'user_has_role';
+    
+        if (isset(Yii::app()->controller->module->userUserTable))
+          $this->_userUserTable = Yii::app()->controller->module->userUserTable;
+        elseif (isset(Yii::app()->modules['user']['userUserTable'])) 
+          $this->_tableName = Yii::app()->modules['user']['userUserTable'];
+        else
+          $this->_userUserTable = 'user_has_user';
+          
+        // resolve table names to use them in relations definition
+        $relationUHRTableName=YumHelper::resolveTableName($this->_userRoleTable,$this->getDbConnection());      
+        $relationUHUTableName=YumHelper::resolveTableName($this->_userUserTable,$this->getDbConnection());
+    
+    	return array(
+    		'profile'=>array(self::HAS_MANY, 'YumProfile', 'user_id', 'order' => 'profile.profile_id DESC'),
+    		'roles'=>array(self::MANY_MANY, 'YumRole', $relationUHRTableName . '(user_id, role_id)'),
+    		'users'=>array(self::MANY_MANY, 'YumUser', $relationUHUTableName . '(owner_id, child_id)'),
+    	);
 	}
 
 	public function register($username=null, $password=null, $email=null)

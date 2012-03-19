@@ -9,4 +9,8 @@ window.onload = function(){
       $('#content').attr("src", $(this.getSelectedItem(0)).attr('value'));
     });
     
+    $('#loginLink').click(function(){
+        window.openDialog("chrome://content/dialog.xul", "loginDialog");
+    });
+    
 };
