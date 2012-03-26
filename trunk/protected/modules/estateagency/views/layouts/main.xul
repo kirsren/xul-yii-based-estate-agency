@@ -24,12 +24,12 @@
 <x:hbox flex="1">
     <x:richlistbox id="menu-list" style="width:20em;" >
 
-      <x:richlistitem value="<?php echo $this->createUrl('/estateagency/estate');?>">
+      <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/estate');?>">
         <?php echo Xul::image($this->module->getAssetsUrl().'/images/agent.png', 'Estates', array('width'=>50, 'height'=>50)); ?>
         <h2>Estates</h2>
       </x:richlistitem>
                    
-      <x:richlistitem value="<?php echo $this->createUrl('/estateagency/default/main');?>" >
+      <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/default/main');?>" >
         <x:hbox pack="center">
         <?php echo Xul::image($this->module->getAssetsUrl().'/images/house.png', 'Estates', array('width'=>50, 'height'=>50)); ?>
          <h2>Agency</h2>
@@ -43,7 +43,7 @@
     </x:splitter>
     
     <x:groupbox flex="1"> 
-        <x:iframe id="content" src="<?php echo $this->createUrl('/estateagency/estate'); ?>" flex="1" >
+        <x:iframe id="content" src="<?php echo $this->createAbsoluteUrl('/estateagency/estate'); ?>" flex="1" >
             <x:description>Töltés...</x:description>
         </x:iframe>
     </x:groupbox>

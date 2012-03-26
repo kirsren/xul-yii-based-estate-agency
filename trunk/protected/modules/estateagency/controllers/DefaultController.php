@@ -41,8 +41,13 @@ class DefaultController extends EAController
     
     public function actionInitxul(){
         $ret = array(
-            'firstxul'=>$this->createAbsoluteUrl('/estateagency'),
-            'secondxul'=>$this->createAbsoluteUrl('/user/user/login'),
+        'appName' => Yii::app()->name,
+        'mainWindow'=>'first.xul',
+        'files' => array(
+            'first.xul'=>$this->createAbsoluteUrl('/estateagency'),
+            'second.xul'=>$this->createAbsoluteUrl('/user/user/login'),
+            'third.xul'=>'http://localhost/szakdoga/yii/index.php?r=estateagency/estate/view&id=1',
+            )
         );
         echo CJSON::encode($ret);
     }

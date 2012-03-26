@@ -1,36 +1,30 @@
 
-
-
 function loadApplication() {
+    
+    Sys.dump('init app');
 
     var url = "http://localhost/szakdoga/yii/index.php?r=estateagency/default/initxul";
     
-    var request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
-                  .createInstance(Components.interfaces.nsIXMLHttpRequest);
-    request.onload = function(aEvent) {    
+    var config = {
+      initUrl : url  
+    };
+    
+    var yii = new Yii.Connection(config);
+    
+    onready = function(){
       
-        var data = jQuery.parseJSON( aEvent.target.responseText );
-        sys.log(data);
-        jQuery.each(data, function(i, d){
-
-         sys.log(i);
-
-        
-//           $.get(data[file], function(page){
-//            alert('sdf');
-//                writeFile(file, page);
-//           });
-           
-        });
+      uri = "chrome://myapp/content/"+ yii.config.appPath + '/' + yii.config.remote.mainWindow ;
+      Sys.log(uri);
+      
+      var ww = Components.classes["@mozilla.org/embedcomp/window-watcher;1"]
+                   .getService(Components.interfaces.nsIWindowWatcher);
+       var win = ww.openWindow(null, uri, yii.config.appName, "chrome,centerscreen", null);
+     
+     window.close();
     };
     
-    request.onerror = function(aEvent) {
-       window.alert("Error Status: " + aEvent.target.status);
-    };
+    yii.init(onready);
     
-    request.open("GET", url, true);
-    request.send(null)
-   
 }
 
 
@@ -38,14 +32,5 @@ function loadApplication() {
 /**
  * Startup
  */
-window.onload = function(){
-
-    sys.dump('init app');
-    
-    loadApplication();
-    
-    sys.store('world', 'hello');
-    //alert(sys.store('world'));
-    
-};
+window.onload = loadApplication;
 
