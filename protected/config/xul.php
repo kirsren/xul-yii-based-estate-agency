@@ -1,6 +1,5 @@
 <?php
 
-//Yii::setPathOfAlias('xwidgets','extensions.xul.widgets');
 
 return CMap::mergeArray(
   require(dirname(__FILE__).'/main.php'),
@@ -15,8 +14,12 @@ return CMap::mergeArray(
         'class'=> 'application.extensions.xul.XulViewRenderer',
       ), 
      'clientScript'=>array(
-				'class'=> 'application.extensions.xul.XulClientScript',
-			),
+		'class'=> 'application.extensions.xul.XulClientScript',
+        ),
+      'assetManager'=>array(
+        'class'=>'application.extensions.xul.XulAssetManager',
+        'server'=>'http://localhost',
+      )
     )
     
   )

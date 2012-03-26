@@ -42,7 +42,7 @@ return array(
 
 	// application components
 	'components'=>array(
-
+     
      'user'=>array(
           'class' => 'application.modules.user.components.YumWebUser',
           'allowAutoLogin'=>true,

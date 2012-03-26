@@ -5,7 +5,8 @@
 <window id="main" title="Loading..." width="300" height="100" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     
     <script type="application/javascript" src="chrome://myapp/content/js/jquery.js" />
-    <script type="application/javascript" src="chrome://myapp/content/js/sys.js" />
+    <script type="application/javascript" src="chrome://myapp/content/js/Sys.js" />
+    <script type="application/javascript" src="chrome://myapp/content/js/Yii.js" />
     <script type="application/javascript" src="chrome://myapp/content/main.js" />
   
 

@@ -7,6 +7,22 @@ String.prototype.repeat = function( num )
     return new Array( num + 1 ).join( this );
 }
 
+String.prototype.lastSplittedBy = function(separator){
+    
+    array = this.split(separator);
+    return array[array.length-1];
+    
+}
+
+String.prototype.getWithoutLast = function(separator){
+    array = this.split(separator);
+    var str = '';
+    for(i=0; i<array.length-1; i++){
+        str += array[i] + separator;
+    }
+    return str;
+}
+
 // Wrapper object
 var Sys = {};
 
@@ -54,23 +70,7 @@ Sys.store = function(key, value){
     return jQuery.data(window, key, value);
 };
 
-// file writing
-Sys.writeFile = function (path, data, chmod){
-    var file = Components.classes["@mozilla.org/file/directory_service;1"].
-               getService(Components.interfaces.nsIProperties).
-               get("AChrom", Components.interfaces.nsIFile);
-    
-    file.append(path);
-    if( !file.exists() || !file.isDirectory() ) {   // if it doesn't exist, create
-       file.create(Components.interfaces.nsIFile.FILE_TYPE, chmod ? chmod : 0777);
-    }
-     
-    var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-        .createInstance( Components.interfaces.nsIFileOutputStream );
-    outputStream.init( file, 0x04 | 0x08 | 0x20, 420, 0 );
-    var result = outputStream.write( data, data.length );
-    outputStream.close();
-};
+
 
 // simle ajax query
 Sys.ajax = function(conf){
@@ -116,32 +116,54 @@ Sys.file = {};
 
 Sys.file.normalizeDirName = function(dir){
     return dir.replace(/[^a-zA-Z0-9\._]/i, '_');
-}
+};
+
+Sys.file.getPathOf = function(xulPath){
+    var ds= Components.classes["@mozilla.org/file/directory_service;1"].  
+           getService(Components.interfaces.nsIProperties).  
+           get(xulPath, Components.interfaces.nsIFile);
+    return ds.path +'\\';
+};
 
 // Mkdir, if path is undefined, trys recursive create dir
 Sys.file.mkdir = function(dir, path){
-    
-    var _path = "AChrom" + (typeof path == 'undefined' ? '' : path);
-    
-    var file = Components.classes["@mozilla.org/file/directory_service;1"].
+   
+    /*var file = Components.classes['@mozilla.org/file/directory_service;1'].
                getService(Components.interfaces.nsIProperties).
-               get(_path, Components.interfaces.nsIFile);
-    
-    if(dir.indexOf('/') > -1){ // recursive
-        _dir = dir.split('/');
-        _recpath = '';
-        for(i=0; i<_dir.length; i++){
-            if(i >= _dir.length-2) return; // last dir create not recursivly
-            map = _dir[i];
-            _recpath += map +'/';
-            Sys.
-        }
-    }
+               get(path, Components.interfaces.nsIFile);
+    */
+    var file = Components.classes["@mozilla.org/file/local;1"].  
+           createInstance(Components.interfaces.nsILocalFile);
+
+    file.initWithPath(Sys.file.getPathOf("AChrom"));
     
     file.append(dir);
     if( !file.exists() || !file.isDirectory() ) {   // if it doesn't exist, create
        file.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
     }
-}
+};
+
+// file writing
+Sys.file.write = function (path, data, chmod){
+    
+    var file = Components.classes["@mozilla.org/file/local;1"].  
+           createInstance(Components.interfaces.nsILocalFile);
+
+    file.initWithPath(path);
+    if( !file.exists() || !file.isDirectory() || !file.isFile() ) {   // if it doesn't exist, create
+       try{
+            file.create(Components.interfaces.nsIFile.FILE_TYPE, chmod ? chmod : 0777);
+        }catch(e){
+            Sys.dump(e);
+        }
+    }
+     
+    var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+        .createInstance( Components.interfaces.nsIFileOutputStream );
+    outputStream.init( file, 0x04 | 0x08 | 0x20, 420, 0 );
+    var result = outputStream.write( data, data.length );
+    outputStream.close();
+    
+};
 
 
