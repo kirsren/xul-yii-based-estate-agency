@@ -21,7 +21,7 @@ String.prototype.getWithoutLast = function(separator){
         str += array[i] + separator;
     }
     return str;
-}
+};
 
 // Wrapper object
 var Sys = {};
@@ -32,12 +32,84 @@ Sys.dump = function(data){
   dump('\n');  
 };
 
+// Services factory
+Sys.services = (function(){
+    
+    var ServiceFactory = function(){ 
+         var services = {};  
+    
+        return {
+          
+          console : function(){
+              services.console = services.console || Components.classes["@mozilla.org/consoleservice;1"]
+                .getService(Components.interfaces.nsIConsoleService);
+                
+              return services.console;
+          },
+          
+          request : function(){
+            return Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
+                  .createInstance(Components.interfaces.nsIXMLHttpRequest);
+          },
+          
+          directory : function(){
+            services.directory = services.directory || Components.classes["@mozilla.org/file/directory_service;1"].  
+                getService(Components.interfaces.nsIProperties);
+            
+            return services.directory;
+           },
+           
+          localfile : function(){
+            return Components.classes["@mozilla.org/file/local;1"].  
+                createInstance(Components.interfaces.nsILocalFile);
+          },
+          
+          fileOutputStream : function(){
+            return Components.classes["@mozilla.org/network/file-output-stream;1"]
+                 .createInstance( Components.interfaces.nsIFileOutputStream );
+          },
+          
+          os : function(){
+            services.os = services.os || Components.classes["@mozilla.org/xre/app-info;1"]  
+               .getService(Components.interfaces.nsIXULRuntime).OS;
+            
+            return services.os; 
+          },
+          
+          runtime : function(){
+            services.runtime = services.runtime || Components.classes["@mozilla.org/xre/app-info;1"]
+                 .getService(Components.interfaces.nsIXULRuntime);
+                 
+            return services.runtime;
+          },
+          
+          window : function(){
+            services.window = services.window || Components.classes["@mozilla.org/embedcomp/window-watcher;1"]
+                       .getService(Components.interfaces.nsIWindowWatcher);
+            
+            return services.window;
+          }
+            
+        };
+    };
+    
+    return new ServiceFactory(); 
+    
+})();
+
+// Operating system detection
+Sys.isWindows = function(){ return ( Sys.services.os().indexOf('WINNT') > -1 ); };
+Sys.isLinux =  function(){ return ( Sys.services.os().indexOf('Linux') > -1 ); };
+Sys.isMac =  function(){ return ( Sys.services.os().indexOf('Darwin') > -1 ); };
+
+// CONSTATNTS, hangs on services
+var DS = Sys.isWindows ? '\\' : '/'; // Directory separator 
+
 // intelligent logger
 // if isReturn is true, returns the merged string
 Sys.log = function(obj, isReturn, depth){
-    if(!this.consoleService)
-      this.consoleService = Components.classes["@mozilla.org/consoleservice;1"].
-             getService(Components.interfaces.nsIConsoleService);
+    
+    var consoleService = Sys.services.console();
     
     var message = obj;
     var _depth = typeof depth == 'undefined' ? 1 : depth;;
@@ -58,23 +130,21 @@ Sys.log = function(obj, isReturn, depth){
     
     if(isReturn) return message;
     
-    this.consoleService.logStringMessage(message);
+    consoleService.logStringMessage(message);
 
 };
 
-// data storage
-Sys.store = function(key, value){
-    if(!value){
-        return jQuery.data(window, key);
+Sys.debug = function(string){
+    
+    if(DEBUG){
+        var console = Sys.services.console();
+        console.logStringMessage('[DEBUG] ' + string);
     }
-    return jQuery.data(window, key, value);
-};
-
-
+    
+}
 
 // simle ajax query
 Sys.ajax = function(conf){
-    
     
     var config = {
         url : "",
@@ -88,8 +158,7 @@ Sys.ajax = function(conf){
 
    if(config.url == '') return;
     
-    request = Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
-                  .createInstance(Components.interfaces.nsIXMLHttpRequest);
+    request = Sys.services.request();
                   
     request.onload = function(event) {    
         var data = event.target.responseText;
@@ -119,47 +188,53 @@ Sys.file.normalizeDirName = function(dir){
 };
 
 Sys.file.getPathOf = function(xulPath){
-    var ds= Components.classes["@mozilla.org/file/directory_service;1"].  
-           getService(Components.interfaces.nsIProperties).  
-           get(xulPath, Components.interfaces.nsIFile);
-    return ds.path +'\\';
+    return Sys.services.directory().get(xulPath, Components.interfaces.nsIFile).path + DS;
 };
 
-// Mkdir, if path is undefined, trys recursive create dir
-Sys.file.mkdir = function(dir, path){
-   
-    /*var file = Components.classes['@mozilla.org/file/directory_service;1'].
-               getService(Components.interfaces.nsIProperties).
-               get(path, Components.interfaces.nsIFile);
-    */
-    var file = Components.classes["@mozilla.org/file/local;1"].  
-           createInstance(Components.interfaces.nsILocalFile);
-
-    file.initWithPath(Sys.file.getPathOf("AChrom"));
-    
-    file.append(dir);
-    if( !file.exists() || !file.isDirectory() ) {   // if it doesn't exist, create
-       file.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
-    }
-};
-
-// file writing
-Sys.file.write = function (path, data, chmod){
-    
-    var file = Components.classes["@mozilla.org/file/local;1"].  
-           createInstance(Components.interfaces.nsILocalFile);
+Sys.file.touch = function(path, chmod){
+    var file = Sys.services.localfile();
 
     file.initWithPath(path);
-    if( !file.exists() || !file.isDirectory() || !file.isFile() ) {   // if it doesn't exist, create
+    if( !file.exists() || !file.isFile() ) {   // if it doesn't exist, create
        try{
             file.create(Components.interfaces.nsIFile.FILE_TYPE, chmod ? chmod : 0777);
         }catch(e){
             Sys.dump(e);
         }
     }
-     
-    var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-        .createInstance( Components.interfaces.nsIFileOutputStream );
+    return file;
+}
+
+// Mkdir, if path is undefined, trys recursive create dir
+Sys.file.mkdir = function(dir, path, chmod){
+    
+    Sys.debug('Try make dir: ' + dir + ', here : ' + path);
+    
+    var file = Sys.services.localfile();
+    file.initWithPath(path);
+    file.append(dir);    
+    if(!file.isDirectory() ) {   // if it doesn't exist, create
+       file.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, chmod ? chmod : 0755);
+    }
+};
+
+// file writing
+Sys.file.write = function (path, data, chmod){
+
+    Sys.debug('Try write file : ' + path);
+
+    var file = Sys.services.localfile();
+
+    file.initWithPath(path);
+    if( !file.exists() || !file.isFile() ) {   // if it doesn't exist, create
+       try{
+            file.create(Components.interfaces.nsIFile.FILE_TYPE, chmod ? chmod : 0777);
+        }catch(e){
+            Sys.dump(e);
+        }
+    }
+    
+    var outputStream = Sys.services.fileOutputStream();
     outputStream.init( file, 0x04 | 0x08 | 0x20, 420, 0 );
     var result = outputStream.write( data, data.length );
     outputStream.close();

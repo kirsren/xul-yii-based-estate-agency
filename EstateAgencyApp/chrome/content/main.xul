@@ -2,18 +2,23 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 
-<window id="main" title="Loading..." width="300" height="100" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    hidechrome="true"
+    id="main"
+    title="Loading..."
+    width="450"
+    height="235">
     
+    <script>
+        var DEBUG = true;
+    </script>
     <script type="application/javascript" src="chrome://myapp/content/js/jquery.js" />
     <script type="application/javascript" src="chrome://myapp/content/js/Sys.js" />
     <script type="application/javascript" src="chrome://myapp/content/js/Yii.js" />
     <script type="application/javascript" src="chrome://myapp/content/main.js" />
-  
 
-  <caption label="Loading application"/>
-
-  <progressmeter mode="undetermined"/>
-
+    <caption>Loading</caption>
+    <progressmeter mode="undetermined"/>
 
 </window>
 

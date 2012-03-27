@@ -10,5 +10,5 @@ $this->menu=array(
 	'dataProvider'=>$dataProvider,
 	'itemView'=>'_view',
     'separator'=> '<hr />',
-    'xulOptions'=>array('flex'=>'1')
+    'xulOptions'=>array('flex'=>'1', 'style'=>'overflow:auto;')
 )); ?>

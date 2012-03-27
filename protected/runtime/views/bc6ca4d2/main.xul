@@ -11,6 +11,10 @@
         centerscreen="true"
         width="1200"
         height="800"
+    	windowtype="main"
+    	orient="vertical"
+    	sizemode="normal"
+    	persist="screenX screenY width height"
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
 
@@ -43,7 +47,7 @@
     </x:splitter>
     
     <x:groupbox flex="1"> 
-        <x:iframe id="content" src="<?php echo $this->createAbsoluteUrl('/estateagency/estate'); ?>" flex="1" >
+        <x:iframe id="content" src="<?php echo $this->createAbsoluteUrl('/estateagency/estate'); ?>" flex="1">
             <x:description>Töltés...</x:description>
         </x:iframe>
     </x:groupbox>
