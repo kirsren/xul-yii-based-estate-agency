@@ -14,19 +14,20 @@ Yii.Connection = function(config){
     
     this.config = {
         initUrl : '',
-        appPath : 'content/apps/APP'      
+        appPath : Sys.file.getPathOf('AChrom')+ 'content' + DS + 'apps' + DS ,
+        appRelativePath :  'apps/'
     };
     
     jQuery.extend(this.config, config);
     
     this.storeInitFile = function(file, url){
         
-        Sys.log('Downloading '+ url);
+        Sys.debug('Yii downloads: '+ url);
         
         Sys.ajax({
             url : url,
             success: function(data){
-                Sys.file.write(Sys.file.getPathOf('AChrom')+'content\\' +file, data, 0755);
+                Sys.file.write(_this.config.appPath + file, data, 0755);
                 _this.inited[_this.inProgress++]=true;                
             }
         });
@@ -63,9 +64,11 @@ Yii.Connection = function(config){
            url : url,
            parse: 'json',
            success: function(data){
-                _this.config.remote = data;
-                _this.config.appPath = Sys.file.normalizeDirName(_this.config.remote.appName);
+                _this.config.remote = data;                
+                _this.config.appPath += Sys.file.normalizeDirName(_this.config.remote.appName) + DS;
+                _this.config.appRelativePath += Sys.file.normalizeDirName(_this.config.remote.appName) + '/';
                 
+                                
                 // init semafors setting
                 num = data.files.length;
                 _this.inited = new Array(num);
@@ -75,7 +78,7 @@ Yii.Connection = function(config){
                 
                 for(fileName in data.files){
                     fileUrl = data.files[fileName];
-                    _this.storeInitFile(_this.config.appPath + '\\' +fileName, fileUrl);   
+                    _this.storeInitFile(fileName, fileUrl);   
                 }
                 
                 
@@ -87,6 +90,16 @@ Yii.Connection = function(config){
            }
         });
         
+      },
+      
+      startAppAndCloseWin : function(window) {
+          var uri = _this.config.appRelativePath + '/' + _this.config.remote.mainWindow ;
+          Sys.log(uri);
+          
+          
+          var ww = Sys.services.window();
+          var win = ww.openWindow(null, uri, _this.config.appName, "chrome,centerscreen, resizable", null);
+          window.close();
       },
 
       config : _this.config      

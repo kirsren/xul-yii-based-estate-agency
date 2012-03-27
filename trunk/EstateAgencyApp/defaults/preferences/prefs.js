@@ -1,4 +1,5 @@
 pref("toolkit.defaultChromeURI", "chrome://myapp/content/main.xul");
+//pref("toolkit.defaultChromeFeatures", "chrome,centerscreen");
 
 
 /* debugging prefs */
