@@ -1,1 +1,3 @@
+#summary fejlesztéshez hasznos linkek
+
   * [https://developer.mozilla.org/en/Code_snippets/ Mozilla Code Snipets]
