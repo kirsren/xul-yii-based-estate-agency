@@ -38,19 +38,12 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
+
 		'name',
 		'description',
 		'price',
-		'rooms',
-		'heating',
-		/*
-		'type',
-		'city',
-		'address',
-		'agent',
-		'client',
-		*/
+
+
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -1,5 +1,6 @@
 pref("toolkit.defaultChromeURI", "chrome://myapp/content/main.xul");
-//pref("toolkit.defaultChromeFeatures", "chrome,centerscreen");
+pref("nglayout.debug.disable_xul_cache", false); // xul caching off
+
 
 
 /* debugging prefs */

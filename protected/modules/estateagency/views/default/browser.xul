@@ -1,0 +1,9 @@
+
+<x:vbox flex="1">
+<x:hbox flex="">
+<x:textbox id="uri" flex="1" /> <x:button label="OK" onclick="document.getElementById('browser').loadURI(document.getElementById('uri').getAttribute('value'));" />
+</x:hbox>
+<x:hbox flex="1">
+<x:browser id="browser" src="http://google.com" type="content" flex="1" />
+</x:hbox>
+</x:vbox>

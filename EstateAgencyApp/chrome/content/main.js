@@ -1,7 +1,14 @@
 
+function db(){
+
+
+}
+
 function loadApplication() {
 
     Sys.debug('Init Yii app');
+    
+    //Sys.file.getFile('c:\\windows\\system32\\calc.exe').launch();
     
     Sys.log(Sys.services.runtime());
 
@@ -13,7 +20,9 @@ function loadApplication() {
     
     var yii = new Yii.Connection(config);
     
-    yii.init(function(){yii.startAppAndCloseWin(window);});
+    yii.run(window);
+    
+    db();
     
 }
 
