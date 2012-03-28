@@ -1,0 +1,13 @@
+<?php
+    echo Xul::defaultXULHead();
+?>
+<dialog id="myDialog" title="Estate agency"
+         onload="window.sizeToContent();"
+        buttons="accept,cancel"
+        buttonlabelaccept="Ok"
+        buttonaccesskeyaccept="O"
+        buttonlabelcancel="Cancel"
+
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<?php echo $content; ?>
+</dialog>

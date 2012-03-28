@@ -7,7 +7,13 @@ class ClientController extends EAController
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
 	public $layout='column2';
-
+    
+    public function layouts(){
+        return array(
+            'admin, update, view' => 'column2.php'
+        );
+    }
+    
 	/**
 	 * @return array action filters
 	 */

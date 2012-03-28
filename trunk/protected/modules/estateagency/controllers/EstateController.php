@@ -16,7 +16,8 @@ class EstateController extends EAController
     
     public function layouts(){
         return array(
-            'admin, update' => 'column2.php'
+            'admin, update' => 'column2.php',
+            'viewimage' => 'dialog.xul'
         );
     }
 
@@ -29,7 +30,7 @@ class EstateController extends EAController
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'viewimage'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -56,6 +57,16 @@ class EstateController extends EAController
 			'model'=>$this->loadModel($id),
 		));
 	}
+    
+    public function actionViewimage($id)
+    {
+        Xul::$namespace = false;
+        $content = $this->render('viewImage', array(
+            'estate'=>Estate::model()->findByPk($id)
+        ), true);
+        Xul::$namespace = 'x';
+        echo $content;
+    }
 
 	/**
 	 * Creates a new model.

@@ -1,6 +1,7 @@
 /**
  * Other, used function
  */
+
  
 String.prototype.repeat = function( num )
 {
@@ -32,6 +33,11 @@ Sys.dump = function(data){
   dump('\n');  
 };
 
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cr = Components.results;
+const Cu = Components.utils;
+
 // Services factory
 Sys.services = (function(){
     
@@ -42,50 +48,50 @@ Sys.services = (function(){
           
           console : function(){
               services.console = services.console || Components.classes["@mozilla.org/consoleservice;1"]
-                .getService(Components.interfaces.nsIConsoleService);
+                .getService(Ci.nsIConsoleService);
                 
               return services.console;
           },
           
           request : function(){
             return Components.classes["@mozilla.org/xmlextras/xmlhttprequest;1"]
-                  .createInstance(Components.interfaces.nsIXMLHttpRequest);
+                  .createInstance(Ci.nsIXMLHttpRequest);
           },
           
           directory : function(){
             services.directory = services.directory || Components.classes["@mozilla.org/file/directory_service;1"].  
-                getService(Components.interfaces.nsIProperties);
+                getService(Ci.nsIProperties);
             
             return services.directory;
            },
            
           localfile : function(){
             return Components.classes["@mozilla.org/file/local;1"].  
-                createInstance(Components.interfaces.nsILocalFile);
+                createInstance(Ci.nsILocalFile);
           },
           
           fileOutputStream : function(){
             return Components.classes["@mozilla.org/network/file-output-stream;1"]
-                 .createInstance( Components.interfaces.nsIFileOutputStream );
+                 .createInstance( Ci.nsIFileOutputStream );
           },
           
           os : function(){
             services.os = services.os || Components.classes["@mozilla.org/xre/app-info;1"]  
-               .getService(Components.interfaces.nsIXULRuntime).OS;
+               .getService(Ci.nsIXULRuntime).OS;
             
             return services.os; 
           },
           
           runtime : function(){
             services.runtime = services.runtime || Components.classes["@mozilla.org/xre/app-info;1"]
-                 .getService(Components.interfaces.nsIXULRuntime);
+                 .getService(Ci.nsIXULRuntime);
                  
             return services.runtime;
           },
           
           window : function(){
             services.window = services.window || Components.classes["@mozilla.org/embedcomp/window-watcher;1"]
-                       .getService(Components.interfaces.nsIWindowWatcher);
+                       .getService(Ci.nsIWindowWatcher);
             
             return services.window;
           }
@@ -98,12 +104,13 @@ Sys.services = (function(){
 })();
 
 // Operating system detection
-Sys.isWindows = function(){ return ( Sys.services.os().indexOf('WINNT') > -1 ); };
-Sys.isLinux =  function(){ return ( Sys.services.os().indexOf('Linux') > -1 ); };
-Sys.isMac =  function(){ return ( Sys.services.os().indexOf('Darwin') > -1 ); };
+Sys.os = {};
+Sys.os.isWindows = function(){ return ( Sys.services.os().indexOf('WINNT') > -1 ); };
+Sys.os.isLinux =  function(){ return ( Sys.services.os().indexOf('Linux') > -1 ); };
+Sys.os.isMac =  function(){ return ( Sys.services.os().indexOf('Darwin') > -1 ); };
 
 // CONSTATNTS, hangs on services
-var DS = Sys.isWindows ? '\\' : '/'; // Directory separator 
+var DS = Sys.os.isWindows ? '\\' : '/'; // Directory separator 
 
 // intelligent logger
 // if isReturn is true, returns the merged string
@@ -113,13 +120,27 @@ Sys.log = function(obj, isReturn, depth){
     
     var message = obj;
     var _depth = typeof depth == 'undefined' ? 1 : depth;;
+    var length = obj.length;
     
     if(typeof obj == 'object'){
         message = '[Object]';
         
-        jQuery.each(obj, function(i, e){
-            message += '\n'+ '  '.repeat(_depth) + i + ' : ' + Sys.log(e, true, _depth+1);
-        });
+        if(length === undefined){
+            for(i in obj){
+                if(obj[i]){
+                    e = obj[i];
+                    message += '\n'+ '  '.repeat(_depth) + i + ' : ' + Sys.log(e, true, _depth+1);
+                }
+            }
+        }else{
+            for(i=0;i<length;i++){
+                if(obj[i]){
+                    e = obj[i];
+                    message += '\n'+ '  '.repeat(_depth) + i + ' : ' + Sys.log(e, true, _depth+1);
+                }
+            }    
+        }
+        
     }
     if(typeof obj == 'function'){
         message = '[Function]';        
@@ -241,4 +262,86 @@ Sys.file.write = function (path, data, chmod){
     
 };
 
+
+Sys.file.getFile = function(sPath) {
+    try {
+      var f = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
+      f.initWithPath(sPath);
+      return f;
+    } catch (e) {
+      Cu.reportError('FileIO.getFile("' + sPath + '"): ' + e.message);
+    }
+    return null;
+};
+
+Sys.file.getFileFromProfDir = function(aAppendNames) {
+    var file = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get('ProfD', Ci.nsIFile);
+    for each(let sName in aAppendNames)
+      file.append(sName);
+    return file;
+};
+
+Sys.file.read = function(file, charset) {
+    // |file| is nsIFile
+    var fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+    var cstream = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
+    fstream.init(file, -1, 0, 0);
+    cstream.init(fstream, charset, 0, 0);
+
+    var data = "";
+    var str = {};
+    while (cstream.readString(4096, str) != 0) {
+      data += str.value;
+    }
+    cstream.close();
+    return data;
+};
+
+Sys.file.getLines = function(file, charset) {
+    var istream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);
+    istream.init(file, 0x01, 0444, 0);
+
+    var is = Cc["@mozilla.org/intl/converter-input-stream;1"].createInstance(Ci.nsIConverterInputStream);
+
+    //This assumes that istream is the nsIInputStream you want to read from
+    is.init(istream, charset, 1024, 0xFFFD);
+
+    // read lines into array
+    var lines = [], line = {}, bHasMore = true;
+    if (is instanceof Ci.nsIUnicharLineInputStream) {
+      do {
+          bHasMore = is.readLine(line);
+          lines.push(line.value);
+      } while (bHasMore);
+    }
+    istream.close();
+    return lines;
+};
+
+//directory listing
+Sys.file.dirListing = function(aDir, bRecursive, aExt) {
+    var fileList = aDir.directoryEntries;
+
+    var aSplit, sExt, msg = "";
+    var file;
+    var iFileCount = 0;
+    var aFiles = [];
+    while (fileList.hasMoreElements()) {
+      file = fileList.getNext().QueryInterface(Ci.nsIFile);
+      if (bRecursive) {
+        if (file.isDirectory()) {
+          var aTemp = this.dirListing(file, bRecursive, aExt);
+          aFiles = aFiles.concat(aTemp);
+        }
+      }
+      aSplit = file.leafName.split(".");
+      sExt = aSplit[aSplit.length - 1]; 
+
+      if (aExt == sExt.toLowerCase() || aExt == "*") {
+        iFileCount++;
+        aFiles.push([file.path, file.leafName, file.fileSize]);
+      }
+    }
+    return aFiles;
+ };
 

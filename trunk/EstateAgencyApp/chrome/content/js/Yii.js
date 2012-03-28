@@ -27,6 +27,7 @@ Yii.Connection = function(config){
         Sys.ajax({
             url : url,
             success: function(data){
+                file = file.replace('/', DS); // must replace couse of WIN
                 Sys.file.write(_this.config.appPath + file, data, 0755);
                 _this.inited[_this.inProgress++]=true;                
             }
@@ -93,13 +94,23 @@ Yii.Connection = function(config){
       },
       
       startAppAndCloseWin : function(window) {
-          var uri = _this.config.appRelativePath + '/' + _this.config.remote.mainWindow ;
-          Sys.log(uri);
-          
-          
+          var uri = _this.config.appRelativePath + _this.config.remote.mainWindow ;
+           
+          Sys.debug('Start app: ' + uri);
+                    
           var ww = Sys.services.window();
           var win = ww.openWindow(null, uri, _this.config.appName, "chrome,centerscreen, resizable", null);
           window.close();
+      },
+      
+      /**
+       * Inits application and after starts it.
+       */
+      run : function(window){
+        _yii = this;
+        this.init(function(){
+            if(window) _yii.startAppAndCloseWin(window); 
+        });
       },
 
       config : _this.config      

@@ -5,9 +5,7 @@
 <window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
     hidechrome="true"
     id="main"
-    title="Loading..."
-    width="450"
-    height="235">
+    title="Loading..." >
     
     <script>
         var DEBUG = true;
@@ -16,9 +14,13 @@
     <script type="application/javascript" src="chrome://myapp/content/js/Sys.js" />
     <script type="application/javascript" src="chrome://myapp/content/js/Yii.js" />
     <script type="application/javascript" src="chrome://myapp/content/main.js" />
+    <gruopbox flex="1">
+        <vbox style="padding:10px;" flex="1" pack="center" align="center">
+        <caption style="font-size: 16px; font-weight:bold; color:darkblue;">Loading XUL application</caption>
+            
+            <progressmeter mode="undetermined" style="width:100%"/>
 
-    <caption>Loading</caption>
-    <progressmeter mode="undetermined"/>
-
+        </vbox>
+    </gruopbox>
 </window>
 

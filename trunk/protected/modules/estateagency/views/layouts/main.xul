@@ -1,9 +1,11 @@
 <?php
   echo Xul::defaultXULHead();
-    Yii::app()->getClientScript()->registerCssFile($this->module->assetsUrl.'/css/main.css');
-    Yii::app()->getClientScript()->registerCssFile(Yii::app()->baseUrl.'/css/xul.css');
+    Yii::app()->getClientScript()->registerCssFile($this->module->assetsUrl.'/css/main.css');   
     Yii::app()->clientScript->registerCoreScript('jquery');
     Yii::app()->clientScript->registerScriptFile($this->module->assetsUrl.'/scripts/main.js');
+    
+    // Yii::app()->getClientScript()->registerCssFile($this->module->assetsUrl.'/css/xul.css'); // wa can have own skin
+    
 ?>
 
 <x:window title="Estate agency"
@@ -18,25 +20,44 @@
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
 
+        
 <x:hbox id="header">
     <x:label flex="1" class="title"><?php echo Yii::app()->name; ?></x:label>
     <x:box>
         <?php echo Xul::link('Logout', array('#'), array('id'=>'loginLink')); ?>
+        <?php echo "<x:button label=\"Dialog\" onclick=\"window.openDialog('"
+                . CHtml::encode($this->createAbsoluteUrl('/estateagency/estate/viewimage', array('id'=>1)))
+                ."', 'image', 'modal');\" />"; ?>
+        
     </x:box>
 </x:hbox>
 
 <x:hbox flex="1">
     <x:richlistbox id="menu-list" style="width:20em;" >
 
-      <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/estate');?>">
-        <?php echo Xul::image($this->module->getAssetsUrl().'/images/agent.png', 'Estates', array('width'=>50, 'height'=>50)); ?>
-        <h2>Estates</h2>
-      </x:richlistitem>
-                   
       <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/default/main');?>" >
         <x:hbox pack="center">
         <?php echo Xul::image($this->module->getAssetsUrl().'/images/house.png', 'Estates', array('width'=>50, 'height'=>50)); ?>
          <h2>Agency</h2>
+        </x:hbox>
+      </x:richlistitem>
+      
+      <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/estate');?>">
+        <?php echo Xul::image($this->module->getAssetsUrl().'/images/agent.png', 'Estates', array('width'=>50, 'height'=>50)); ?>
+        <h2>Estates</h2>
+      </x:richlistitem>
+      
+      <x:richlistitem value="<?php echo $this->createAbsoluteUrl('/estateagency/estate/admin');?>" >
+        <x:hbox pack="center">
+        <?php echo Xul::image($this->module->getAssetsUrl().'/images/staff.png', 'Staff', array('width'=>50, 'height'=>50)); ?>
+         <h2>Mange estates</h2>
+        </x:hbox>
+      </x:richlistitem>
+      
+      <x:richlistitem value="<?php echo  "browser.xul"; /*$this->createAbsoluteUrl('/estateagency/default/browser')*/?>" >
+        <x:hbox pack="center">
+        <?php echo Xul::image($this->module->getAssetsUrl().'/images/firefox.png', 'Firefox', array('width'=>50, 'height'=>50)); ?>
+         <h2>Browser</h2>
         </x:hbox>
       </x:richlistitem>
             
@@ -47,7 +68,7 @@
     </x:splitter>
     
     <x:groupbox flex="1"> 
-        <x:iframe id="content" src="<?php echo $this->createAbsoluteUrl('/estateagency/estate'); ?>" flex="1">
+        <x:iframe id="content" src="welcome.xul" flex="1">
             <x:description>Töltés...</x:description>
         </x:iframe>
     </x:groupbox>
