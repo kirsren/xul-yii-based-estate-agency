@@ -4,11 +4,36 @@ $this->menu=array(
 	array('label'=>'Create Estate', ),
 	array('label'=>'Manage Estate', ),
 );
-?>
 
-<?php $this->widget('ext.xul.widgets.XulListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-    'separator'=> '<hr />',
-    'xulOptions'=>array('flex'=>'1', 'style'=>'overflow:auto;')
-)); ?>
+$this->widget('ext.xul.widgets.tab.XulTabbox', array(
+    'xulOptions'=>array(
+        'id'=>'tabbox1',
+        'selectedIndex'=>0,
+        'eventnode'=>'window'
+        
+    ),
+    'tabs'=>array(
+        'JSON tree'=>array(
+            'file'=>'tabs/jsontree'
+        ),
+
+    
+        'Estates'=>array(
+            'data'=>array('dataProvider'=>$dataProvider),
+            'file'=>'tabs/tree'
+        ),
+        
+        'Showcase'=>array(
+            'data'=>array('dataProvider'=>$dataProvider),
+            'file'=>'tabs/showcase'
+        ),
+        'Template'=>array(
+            'file'=>'tabs/template'
+        ),
+        'First tab'=>'Some content',
+        
+                
+    )
+));
+
+?>

@@ -1,0 +1,242 @@
+ <x:keyset>
+    <x:key modifiers="control" key="Q" id="refreshtree" command="inittree_cmd" />
+    <x:key modifiers="control" key="S" if="saveestate_key" command="saveestate_cmd" />
+ </x:keyset>
+ 
+ <x:command id="inittree_cmd" oncommand="init_mytree();document.getElementById('filter').value='';"/>
+ <x:command id="saveestate_cmd" oncommand="saveEstate();" />
+ 
+ <?php
+ echo Xul::openVbox(array('flex'=>1));
+ 
+ echo Xul::openHbox();
+    echo Xul::button('Frissít', null, array(
+        'command'=>'inittree_cmd',
+    ));
+    echo Xul::textbox(array('oncommand'=>"SearchKeyword(this)", 'type'=>'search', 'id'=>'filter', 'width'=>'200'));
+    echo Xul::label('Press Ctrl+Q to refresh.');
+    
+    echo Xul::xtag('spacer',array('flex'=>1));
+    
+    echo Xul::xtag('progressmeter',array(
+    'mode'=>'determined',
+    'value'=>0,
+    'id'=>'mytree_progressmeter',
+    ));
+ 
+ echo Xul::closeHbox();
+ 
+ echo Xul::openHbox(array('flex'=>1, 'style'=>'overflow:auto;'));
+
+$this->widget('ext.xul.widgets.grid.XulJsonTreeView', array(
+	'jsonProvider'=>$this->createAbsoluteUrl('estate/json'),
+    'pageVar'=>'estatepage',
+    'treechildrenId'=>  'mytree',
+    'jsDataVar'=>'ESTATES',
+    'jsBeforeFill'=>'setEstateForm();',
+    'jsAfterFill'=>'',
+    'columnSplitter'=>true,
+    
+    'progressmeter'=>'mytree_progressmeter',    
+    'treeXulOptions'=>array(
+        'id'=>'jsonestatestree',
+        'editable'=>'false',
+        'rows'=>28,
+        'flex'=>'3',
+        'seltype'=>'single',
+        'enableColumnDrag'=>true,
+        'onselect'=>'setEstateForm();',
+    ),
+
+    'columns'=>array(
+        'name',
+        'price',
+        'city',        
+        'agent'=>array(
+            'name'=>'Agent',
+            'property'=>'agent',
+            'type'=>'raw',
+            'value'=> 'YumUser::model()->findByPk($data->agent)->profile[0]->getFormattedName("{lastname} {firstname}")',
+            'xulOptions'=>array('editable'=>'true', 'height'=>30)    
+        ),
+        'client'=>array(
+            'name'=>'Client',
+            'property'=>'client',
+            'type'=>'raw',
+            'value'=> 'YumUser::model()->findByPk($data->client)->profile[0]->getFormattedName("{lastname} {firstname}")'    
+        ),
+        'created',
+        'description',
+        'type',
+        'rooms',
+        'heating',
+        'modified'=>array(
+            'name'=>'Modified',
+            'property'=>'modified',
+            'type'=>'raw',
+            'value'=>'Xul::xtag("datepicker", array("value"=> date("yyyy-MM-dd",strtotime($data->modified))));'
+        )
+    )
+));
+
+//----------------- FORM ------------------
+echo Xul::xopenTag('groupbox',array('flex'=>1, 'id'=>'estateform'));
+echo Xul::xtag('caption', array('label'=>'Estate'));
+    
+    echo Xul::label('Name');
+    echo Xul::textbox(array(
+        'id'=>'estateform_name',
+        'multiline'=>'false',
+        'rows'=>'1',
+        'placeholder'=>'Estate name',
+    ));
+    
+    echo Xul::label('City');
+    echo Xul::textbox(array(
+        'id'=>'estateform_city',
+        'multiline'=>'false',
+        'rows'=>'1',
+        'placeholder'=>'City',
+    ));
+    
+    echo Xul::label('Description');
+    echo Xul::textbox(array(
+        'id'=>'estateform_description',
+        'multiline'=>'true',
+        'rows'=>'3',
+        'placeholder'=>'Description',
+    ));
+    
+    echo Xul::label('Price');
+    echo Xul::textbox(array(
+        'id'=>'estateform_price',
+        'type'=>'number',   
+        'placeholder'=>'Price',
+    ));
+    
+    echo Xul::label('Modified');
+    echo Xul::xtag('datepicker',array(
+        'value'=>'2000-01-01',
+        'id'=>'estateform_modified',        
+        'type'=>'popup'
+    ));
+    
+    echo Xul::label('Heating');
+    echo Xul::dropDownList('estateform_heating', 1 ,array('fa', 'szén', 'gáz', 'vegyes', 'központi'), array('editable'=>'true'));
+    
+    echo Xul::openHbox();
+        echo Xul::button('Save', null, array(
+            'command'=>'saveestate_cmd',
+            'accesskey'=>'S',
+            'key'=>'saveestte_key',
+            'flex'=>1      
+        ));
+        echo Xul::button('Print', null, array(
+            'command'=>'cmd_print'
+        ));
+    echo Xul::closeHbox();
+
+echo Xul::xcloseTag('groupbox');
+
+Yii::app()->clientScript->registerScript('fillform', <<<SCRIPT
+
+function create(elem){
+    return document.createElement(elem);
+}
+
+function byid(id){
+    return document.getElementById(id);
+}
+
+function setEstateForm(){
+   
+   var tree = byid('jsonestatestree');
+    var index = tree.currentIndex;    
+    var ch = byid('mytree').children;  
+      
+    if(index == -1) return;
+
+    var row = ch[index].firstChild;
+    var cells = row.children;
+        
+    function setField(prop, cellindex){
+
+        
+         var field = byid('estateform_'+prop);
+         field.value = cells[cellindex].getAttribute('label');
+               
+         //field.setAttribute(a, cells[cellindex].getAttribute('label'));
+        
+    }
+    
+    setField('name', 0);
+    setField('price', 1);
+    setField('city', 2);
+    setField('description', 6);
+    setField('heating', 9);
+    
+     var modified= byid('estateform_modified');
+     
+     var dd = cells[10].getAttribute('label');
+
+     dd = dd.split(' ');
+     
+     dd = dd[0].split('-');
+     
+     modified.dateValue =  new Date(dd[0], dd[1]-1 ,dd[2],0,0,0,1);
+
+      
+}
+
+function saveEstate(){
+    alert('Saving');
+    init_mytree();
+}
+
+
+SCRIPT
+, XulClientScript::POS_BEGIN);
+
+?>
+ 
+<script>
+//<![CDATA[
+function SearchKeyword(oElem)
+{
+  var filter = oElem.value;
+  
+  if(filter == ''){
+    fill_mytree(ESTATES.data);
+    return;
+  }
+  
+  var data = [];
+  
+  var regexp = new RegExp(filter, "i"); // case insensitive
+  
+  for(i in ESTATES.data){
+    var model = ESTATES.data[i];
+    
+    var match = false;
+    for(e in model){
+        var attr = model[e];                        
+        if(false != regexp.test(attr)){            
+            match = true;
+            break;
+        } 
+    }
+    if(match){
+        data.push(model);
+        continue;
+    }
+  }
+  
+  fill_mytree(data);
+}
+//]]>
+</script>
+<?php
+
+echo Xul::closeHbox();
+
+echo Xul::closeVbox();

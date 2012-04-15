@@ -7,11 +7,24 @@
 class XulController extends CController{
   
     public $xulHeader = true;
+    
+    public $forcePartialRender = false;
     /**
      * @return array of layouts, where key is the name of the action
      */
     public function layouts(){
        return array(); 
+    }
+    
+    /**
+     * Id $this->forecePartialRender is true, render partial and returns the content.
+     */
+    public function render($view, $data = null, $return = false){
+        if($this->forcePartialRender){            
+            return parent::renderPartial($view, $data, $return);
+        }            
+        
+        return parent::render($view, $data, $return);
     }
   
     /**
@@ -51,6 +64,7 @@ class XulController extends CController{
                 $layout = $tmp[0];                
                 if($tmp[1] != 'xul') $this->xulHeader = false;
             }
+            if(empty($layout) || is_null($layout)) $this->xulHeader = false;
             
             $this->layout = $layout;
         }

@@ -247,6 +247,13 @@ class XulClientScript extends CClientScript{
 		}
 		return $this;
 	}
+    
+    /**
+     * Exact same the parent method, just default value of $position other.
+     */ 
+   	public function registerScript($id,$script,$position=self::POS_LOAD){
+   	    parent::registerScript($id, $script, $position);
+   	}
 
 	
 	/**

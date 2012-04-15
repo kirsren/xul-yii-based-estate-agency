@@ -1,94 +1,96 @@
-<div class="form">
+<?php
 
-<?php $form=$this->beginWidget('CActiveForm', array(
+echo Xul::openVbox();
+
+$form=$this->beginWidget('ext.xul.widgets.form.XulActiveForm', array(
 	'id'=>'estate-form',
 	'enableAjaxValidation'=>false,
     'htmlOptions'=>array('enctype'=>'multipart/form-data'),
-)); ?>
+));
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	echo $form->errorSummary($model);
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'name'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'name'); 
+		echo $form->textField($model,'name',array('size'=>60,'maxlength'=>255)); 
+		echo $form->error($model,'name'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'description'); ?>
-		<?php  echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'description'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'description'); 
+		 echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); 
+		echo $form->error($model,'description'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'price'); ?>
-		<?php  echo $form->textField($model,'price');
-        //echo Xul::activeNumberfield($model, 'price', array('min'=>1, 'max'=>'1000000')); ?>
-		<?php echo $form->error($model,'price'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'price'); 
+		 echo $form->textField($model,'price');
+        //echo Xul::activeNumberfield($model, 'price', array('min'=>1, 'max'=>'1000000')); 
+		echo $form->error($model,'price'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'rooms'); ?>
-		<?php echo $form->textField($model,'rooms'); ?>
-		<?php echo $form->error($model,'rooms'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'rooms'); 
+		echo $form->textField($model,'rooms'); 
+		echo $form->error($model,'rooms'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'heating'); ?>
-		<?php echo $form->textField($model,'heating',array('size'=>20,'maxlength'=>20)); ?>
-		<?php echo $form->error($model,'heating'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'heating'); 
+		echo $form->textField($model,'heating',array('size'=>20,'maxlength'=>20)); 
+		echo $form->error($model,'heating'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'type'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'type'); 
+		echo $form->textField($model,'type',array('size'=>10,'maxlength'=>10)); 
+		echo $form->error($model,'type'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'city'); ?>
-		<?php echo $form->textField($model,'city',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'city'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'city'); 
+		echo $form->textField($model,'city',array('size'=>60,'maxlength'=>255)); 
+		echo $form->error($model,'city'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'address'); ?>
-		<?php echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'address'); ?>
-	</div>
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'address'); 
+		echo $form->textField($model,'address',array('size'=>60,'maxlength'=>255)); 
+		echo $form->error($model,'address'); 
+	echo Xul::closeVbox();
     
-    <div class="row">
-		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->fileField($model,'image'); ?>
-		<?php echo $form->error($model,'image'); ?>
-	</div>
+    echo Xul::openVbox();
+		echo $form->labelEx($model,'image'); 
+		echo $form->fileField($model,'image'); 
+		echo $form->error($model,'image'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'agent'); ?>
-		<?php        
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'agent'); 
+		       
          echo $form->dropDownList($model,'agent',
              CHtml::listData(YumUser::model()->getByRole('Agent')
              , 'id', 'username')            
-        ); ?>
-		<?php echo $form->error($model,'agent'); ?>
-	</div>
+        ); 
+		echo $form->error($model,'agent'); 
+	echo Xul::closeVbox();
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'client'); ?>
-		<?php
-         echo $form->dropDownList($model,'client',
+	echo Xul::openVbox();
+		echo $form->labelEx($model,'client'); 
+		
+        echo $form->dropDownList($model,'client',
              CHtml::listData(Client::model()->findAll('agent=:agent', array(':agent'=>Yii::app()->user->id))
              , 'id', 'name')            
-        ); ?>
-		<?php echo $form->error($model,'agent'); ?>
-	</div>
+        ); 
+		echo $form->error($model,'agent'); 
+	echo Xul::closeVbox();
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+	echo Xul::openHbox();
+		echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save');
+	echo Xul::closeHbox();
 
-<?php $this->endWidget(); ?>
+$this->endWidget(); 
 
-</div><!-- form -->
+echo Xul::closeVbox();
+

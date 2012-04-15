@@ -1,0 +1,4 @@
+<dialogheader title="<?php echo $estate->name; ?>" description="Image"/>
+  <groupbox flex="1">
+   <?php echo Xul::image($estate->getFileUrl('large'),'Image'); ?>    
+</groupbox>

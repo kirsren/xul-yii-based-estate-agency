@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?><!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>jid0-p2LKPOqn0iSSj1SKZJCqIJBT9G0@jetpack</em:id>
+    <em:version>0.4</em:version>
+    <em:type>2</em:type>
+    <em:bootstrap>true</em:bootstrap>
+    <em:unpack>true</em:unpack>
+<!--	<em:updateURL>https://localhost/szakdoga/yii/zsoltlengyel/update.rdf</em:updateURL>
+	<em:updateLink>http://localhost/szakdoga/yii/zsoltlengyel/zsoltlengyel.xpi</em:updateLink>
+-->
+    <!-- Firefox -->
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>10.0</em:minVersion>
+        <em:maxVersion>12.0a2</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+
+    <!-- Front End MetaData -->
+    <em:name>EstateAgency</em:name>
+    <em:description></em:description>
+    <em:creator>ZsoltLengyel</em:creator>
+    <em:iconURL/>
+    <em:icon64URL/>
+<!--	
+	<em:updateKey>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDK426erD/H3XtsjvaB5+PJqbhj
+               Zc9EDI5OCJS8R3FIObJ9ZHJK1TXeaE7JWqt9WUmBWTEFvwS+FI9vWu8058N9CHhD
+               NyeP6i4LuUYjTURnn7Yw/IgzyIJ2oKsYa32RuxAyteqAWqPT/J63wBixIeCxmysf
+               awB/zH4KaPiY3vnrzQIDAQAB</em:updateKey>
+    -->
+    
+    
+  </Description>
+</RDF>

@@ -58,7 +58,7 @@ class YumProfile extends YumActiveRecord
     	elseif (isset(Yii::app()->modules['user']['profileTable'])) 
       		$this->_tableName = Yii::app()->modules['user']['profileTable'];
     	else
-      		$this->_tableName = '{{profiles}}'; // fallback if nothing is set
+      		$this->_tableName = 'profiles'; // fallback if nothing is set
 
     	return YumHelper::resolveTableName($this->_tableName,$this->getDbConnection());
   	}

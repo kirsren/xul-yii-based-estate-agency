@@ -4,9 +4,17 @@ function db(){
 
 }
 
+
+function getWebBrowserPrint()
+{
+return _content.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+.getInterface(Components.interfaces.nsIWebBrowserPrint);
+}
+
 function loadApplication() {
 
     Sys.debug('Init Yii app');
+    DEBUG = true;
     
     //Sys.file.getFile('c:\\windows\\system32\\calc.exe').launch();
     
@@ -22,8 +30,9 @@ function loadApplication() {
     
     yii.run(window);
     
-    db();
-    
+    let prompts =
+  Cc["@mozilla.org/embedcomp/prompt-service;1"].
+    getService(Ci.nsIPromptService);
 }
 
 
