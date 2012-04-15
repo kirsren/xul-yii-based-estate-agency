@@ -1,14 +1,16 @@
 
 <!-- start item -->
-<x:hbox>
+<x:vbox>
     
-    <x:hbox>
-    <?php echo Xul::image($data->getFileUrl(),'Image'); ?>
+    <x:hbox align="center">
+    <?php echo Xul::image($data->getFileUrl() == null ? $this->module->getAssetsUrl().'/images/blank.jpg' : $data->getFileUrl() ,'Image'); ?>
     </x:hbox>
 
     <x:vbox flex="1">
     	<x:hbox>        
-            <?php echo Xul::link(Xul::encode($data->name), array('view', 'id'=>$data->id)); ?>
+            <?php
+                echo Xul::button('Edit', '');
+            ?>
     	</x:hbox>
     
         <x:hox>
@@ -31,23 +33,7 @@
         <x:hbox>
     	<?php echo Xul::encode($data->getAttributeLabel('type')); ?>: <?php echo Xul::encode($data->type); ?>
         </x:hbox>
-        
-    	<?php /*
-    	<b><?php echo Xul::encode($data->getAttributeLabel('city')); ?>:</b>
-    	<?php echo Xul::encode($data->city); ?>
-    	
-    
-    	<b><?php echo Xul::encode($data->getAttributeLabel('address')); ?>:</b>
-    	<?php echo Xul::encode($data->address); ?>
-    	
-    
-    	<b><?php echo Xul::encode($data->getAttributeLabel('agent')); ?>:</b>
-    	<?php echo Xul::encode($data->agent); ?>
-    	
-    
-    	<b><?php echo Xul::encode($data->getAttributeLabel('client')); ?>:</b>
-    	<?php echo Xul::encode($data->client); ?>
-    	*/ ?>
+
      </x:vbox>
- </x:hbox>
+ </x:vbox>
  <!-- end item -->

@@ -27,6 +27,8 @@ String.prototype.getWithoutLast = function(separator){
 // Wrapper object
 var Sys = {};
 
+Sys.DEBUG = false;
+
 // dump width break
 Sys.dump = function(data){
   dump(data);
@@ -82,6 +84,13 @@ Sys.services = (function(){
             return services.os; 
           },
           
+          preferences : function(){
+            services.preferences = services.preferencesComponents.classes["@mozilla.org/preferences-service;1"]
+                            .getService(Components.interfaces.nsIPrefBranch);
+            
+            return services.preferences;
+          },
+          
           runtime : function(){
             services.runtime = services.runtime || Components.classes["@mozilla.org/xre/app-info;1"]
                  .getService(Ci.nsIXULRuntime);
@@ -94,7 +103,7 @@ Sys.services = (function(){
                        .getService(Ci.nsIWindowWatcher);
             
             return services.window;
-          }
+          },
             
         };
     };
@@ -155,9 +164,8 @@ Sys.log = function(obj, isReturn, depth){
 
 };
 
-Sys.debug = function(string){
-    
-    if(DEBUG){
+Sys.debug = function(string){    
+    if(Sys.DEBUG){
         var console = Sys.services.console();
         console.logStringMessage('[DEBUG] ' + string);
     }

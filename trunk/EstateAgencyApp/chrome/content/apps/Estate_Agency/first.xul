@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<?xml-stylesheet href="bindings/bindings.css" type="text/css"?>
+<?xml-stylesheet href="http://localhost/szakdoga/yii/assets/913ece13/css/main.css" type="text/css"?>
+<x:window title="Estate agency"
+        id="mainwindow"
+        centerscreen="true"
+        width="1200"
+        height="800"
+    	windowtype="main"
+    	orient="vertical"
+    	sizemode="normal"
+    	persist="screenX screenY width height"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+<script type="text/javascript" src="http://localhost/szakdoga/yii/assets/c633d65e/jquery.js"></script>
+<script type="text/javascript" src="http://localhost/szakdoga/yii/assets/913ece13/scripts/main.js"></script>
+
+
+        
+<x:hbox id="header">
+    <x:label flex="1" class="title">Estate Agency</x:label>
+    <x:box>
+        <x:label id="loginLink" href="/szakdoga/yii/index.php?r=estateagency/default/#" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/default/#&quot;;" class="text-link">Logout</x:label>        <x:button label="Dialog" onclick="window.openDialog('http://localhost/szakdoga/yii/index.php?r=estateagency/estate/viewimage&amp;id=1', 'image', 'modal');" />        
+    </x:box>
+</x:hbox>
+
+<x:hbox flex="1">
+    <x:richlistbox id="menu-list" style="width:20em;" selectedIndex="1" >
+
+      <x:richlistitem value="http://localhost/szakdoga/yii/index.php?r=estateagency/default/main" >
+        <x:hbox pack="center">
+        <x:image width="50" height="50" src="http://localhost/szakdoga/yii/assets/913ece13/images/house.png" alt="Estates" />         <h2>Agency</h2>
+        </x:hbox>
+      </x:richlistitem>
+      
+      <x:richlistitem value="http://localhost/szakdoga/yii/index.php?r=estateagency/estate">
+        <x:image width="50" height="50" src="http://localhost/szakdoga/yii/assets/913ece13/images/agent.png" alt="Estates" />        <h2>Estates</h2>
+      </x:richlistitem>
+      
+      <x:richlistitem value="http://localhost/szakdoga/yii/index.php?r=estateagency/estate/admin" >
+        <x:hbox pack="center">
+        <x:image width="50" height="50" src="http://localhost/szakdoga/yii/assets/913ece13/images/staff.png" alt="Staff" />         <h2>Mange estates</h2>
+        </x:hbox>
+      </x:richlistitem>
+      
+      <x:richlistitem value="browser.xul" >
+        <x:hbox pack="center">
+        <x:image width="50" height="50" src="http://localhost/szakdoga/yii/assets/913ece13/images/firefox.png" alt="Firefox" />         <h2>Browser</h2>
+        </x:hbox>
+      </x:richlistitem>
+            
+    </x:richlistbox>
+
+    <x:splitter collapse="before" resizebefore="closest" resizeafter="grow">
+     <x:grippy />
+    </x:splitter>
+    
+    <x:groupbox flex="1"> 
+        <x:iframe id="content" src="http://localhost/szakdoga/yii/index.php?r=estateagency/estate" flex="1">
+            <x:description>Töltés...</x:description>
+        </x:iframe>
+    </x:groupbox>
+
+  </x:hbox>
+  
+</x:window>

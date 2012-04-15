@@ -1,0 +1,3536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+
+<?xml-stylesheet href="/szakdoga/yii/css/xul.css" type="text/css"?>
+<x:window title="Estate egency"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
+      
+<x:tabbox id="tabbox1" selectedIndex="0" eventnode="window"><x:tabs><x:tab label="Estates" /><x:tab label="Showcase" /><x:tab label="Template" /><x:tab label="First tab" /></x:tabs><x:tabpanels><x:tabpanel>
+<script>
+function SearchKeyword(oElem)
+{
+  var filter = document.getElementById("filter");
+  filter.setAttribute("value", oElem.value);
+
+  var tree = document.getElementById("estatestree");
+  console.log(tree);
+  //.builder.rebuild();
+}
+</script>
+ <x:vbox flex="1"><x:textbox oncommand="SearchKeyword(this)" type="search" id="filter" width="200" /><x:hbox flex="1" style="overflow:auto;"><x:tree id="estatestree" editable="true" rows="28" flex="2" onselect="document.getElementById(&quot;estatesdeck&quot;).selectedIndex = this.currentIndex;" seltype="single" enableColumnDrag="1"><x:treecols>
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_name" sort="?treecol_name" label="Name" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_price" sort="?treecol_price" label="Price" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_city" sort="?treecol_city" label="City" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_Agent" sort="?treecol_Agent" label="Agent" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_Client" sort="?treecol_Client" label="Client" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="treecol_Modified" sort="?treecol_Modified" label="Modified" />
+</x:treecols>
+<x:treechildren>
+<x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Telki telek" />
+<x:treecell label="500" />
+<x:treecell label="Telki" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kecskemét kertes" />
+<x:treecell label="323" />
+<x:treecell label="Kecskemét" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi ingatlan" />
+<x:treecell label="43" />
+<x:treecell label="Szeged" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;70707070-JanJan-0101&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kiskuntarcsa" />
+<x:treecell label="45" />
+<x:treecell label="Kiskuntarcsa" />
+<x:treecell editable="true" height="30" label="admin admin" />
+<x:treecell label="admin admin" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-1212&quot; /&gt;" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Csongrádi tanya" />
+<x:treecell label="34" />
+<x:treecell label="Csongrád" />
+<x:treecell editable="true" height="30" label="Nagy Terézia" />
+<x:treecell label="Lengyel Zsolt" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-MarMar-2828&quot; /&gt;" />
+</x:treerow></x:treeitem></x:treechildren>
+</x:tree>
+<x:deck id="estatesdeck" selectedIndex="0"><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="/szakdoga/yii/files/estates/estate_1.png" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=1" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=1&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="/szakdoga/yii/files/estates/estate_2.png" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=2" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=2&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="/szakdoga/yii/files/estates/estate_3.png" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=3" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=3&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="/szakdoga/yii/files/estates/estate_4.png" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=4" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=4&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="/szakdoga/yii/files/estates/estate_5.png" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=5" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=5&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=6" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=6&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=7" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=7&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=8" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=8&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=9" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=9&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=10" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=10&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=11" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=11&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=12" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=12&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=13" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=13&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=14" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=14&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=15" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=15&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=16" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=16&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=17" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=17&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=18" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=18&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=19" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=19&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=20" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=20&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=21" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=21&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=22" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=22&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=23" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=23&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=24" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=24&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=25" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=25&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=26" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=26&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=27" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=27&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=28" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=28&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=29" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=29&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=30" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=30&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=31" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=31&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=32" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=32&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=33" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=33&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=34" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=34&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=35" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=35&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=36" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=36&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=37" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=37&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=38" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=38&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=39" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=39&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=40" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=40&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=41" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=41&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=42" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=42&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=43" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=43&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=44" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=44&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=45" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=45&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=46" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=46&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=47" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=47&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=48" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=48&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=49" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=49&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=50" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=50&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=51" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=51&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=52" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=52&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=53" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=53&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=54" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=54&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=55" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=55&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=56" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=56&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=57" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=57&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=58" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=58&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=59" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=59&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=60" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=60&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=61" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=61&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=62" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=62&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=63" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=63&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=64" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=64&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=65" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=65&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=66" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=66&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=67" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=67&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=68" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=68&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=69" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=69&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=70" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=70&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=71" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=71&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=72" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=72&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=73" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=73&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=74" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=74&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=75" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=75&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=76" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=76&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=77" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=77&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=78" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=78&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=79" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=79&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=80" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=80&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=81" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=81&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=82" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=82&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=83" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=83&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=84" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=84&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=85" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=85&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=86" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=86&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=87" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=87&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=88" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=88&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=89" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=89&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=90" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=90&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=91" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=91&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=92" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=92&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=93" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=93&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=94" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=94&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=95" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=95&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=96" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=96&quot;;" class="text-link">Telki telek</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Leírása    	</x:hox>
+        
+    	<x:hbox>
+        Price: 500    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 5    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: Padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: Tégla        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=97" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=97&quot;;" class="text-link">Kecskemét kertes</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	jó állapotban lévQ    	</x:hox>
+        
+    	<x:hbox>
+        Price: 323    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 3    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: 4        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=98" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=98&quot;;" class="text-link">Szegedi ingatlan</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Lorem ipsum dolor site ament    	</x:hox>
+        
+    	<x:hbox>
+        Price: 43    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 2    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: vegyes        </x:hbox>
+    	
+        <x:hbox>
+    	Type: panel        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=99" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=99&quot;;" class="text-link">Kiskuntarcsa</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tarcsa falvi ingatlan    	</x:hox>
+        
+    	<x:hbox>
+        Price: 45    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 4    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: padló        </x:hbox>
+    	
+        <x:hbox>
+    	Type: lakás        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox><x:groupbox flex="1">
+<!-- start item -->
+<x:vbox>
+    
+    <x:hbox>
+    <x:image src="http://localhost/szakdoga/yii/assets/913ece13/images/blank.jpg" alt="Image" />    </x:hbox>
+
+    <x:vbox flex="1">
+    	<x:hbox>        
+            <x:label href="/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=100" onclick="location.href=&quot;/szakdoga/yii/index.php?r=estateagency/estate/view&amp;id=100&quot;;" class="text-link">Csongrádi tanya</x:label>    	</x:hbox>
+    
+        <x:hox>
+    	Description:
+    	Tanya    	</x:hox>
+        
+    	<x:hbox>
+        Price: 34    	</x:hbox>
+    
+        <x:hbox>
+    	Rooms: 34    	</x:hbox>
+    
+    	<x:hbox>
+        Heating: fa        </x:hbox>
+    	
+        <x:hbox>
+    	Type: vályog        </x:hbox>
+
+     </x:vbox>
+ </x:vbox>
+ <!-- end item --></x:groupbox></x:deck></x:hbox></x:vbox></x:tabpanel><x:tabpanel><x:vbox> <x:textbox class="padded" flex="1"
+			 preference="defaultStartupHomepage"
+			 id="defaultStartupHomepageField"
+                   type="autocomplete" autocompletesearch="history" />
+</x:vbox></x:tabpanel><x:tabpanel></x:tabpanel><x:tabpanel>Some content</x:tabpanel></x:tabpanels></x:tabbox></x:window>

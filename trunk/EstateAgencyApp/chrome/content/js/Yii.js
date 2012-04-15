@@ -79,6 +79,7 @@ Yii.Connection = function(config){
                 
                 for(fileName in data.files){
                     fileUrl = data.files[fileName];
+                    Sys.dump('Getting: '+ fileName + ' from: '+fileUrl);
                     _this.storeInitFile(fileName, fileUrl);   
                 }
                 
