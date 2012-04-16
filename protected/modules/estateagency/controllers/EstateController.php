@@ -224,7 +224,7 @@ class EstateController extends EAController
         $xml = new XMLGenerator;
         $provider = new CActiveDataProvider('Estate', array(
             'pagination'=>array(
-                'pageSize'=>10000,
+                'pageSize'=>100,
                 'currentPage'=>$page
             )
         ));

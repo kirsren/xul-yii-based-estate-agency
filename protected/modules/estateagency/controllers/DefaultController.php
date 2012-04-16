@@ -103,9 +103,11 @@ class DefaultController extends EAController
 
     public function actionExtension($output=false)
     {
-        $this->layout = 'main';
+        Yii::app()->clientScript->registerScriptFile('chrome://myapp/content/Sys.js');
+        Yii::app()->clientScript->registerScriptFile('chrome://myapp/content/main.js');
         
-        ;       
+        $this->layout = 'main';       
+                       
         ob_start();
         $this->run('index');
         $content = ob_get_contents();

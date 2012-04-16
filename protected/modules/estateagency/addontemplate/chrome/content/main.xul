@@ -18,6 +18,8 @@
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
 <script type="text/javascript" src="http://localhost/szakdoga/yii/assets/c6886422/jquery.js"></script>
+<script type="text/javascript" src="chrome://myapp/content/Sys.js"></script>
+<script type="text/javascript" src="chrome://myapp/content/main.js"></script>
 <script type="text/javascript" src="http://localhost/szakdoga/yii/assets/913ece13/scripts/main.js"></script>
 <script type="text/javascript">
  //<![CDATA[
@@ -129,8 +131,10 @@ function printcnn(){
  
 	windowObjectReference = window.open("http://localhost/szakdoga/yii/files/lorem.txt", "CNN_WindowName", strWindowFeatures); 
 	
-	windowObjectReference.print();
-
+	windowObjectReference.onload = function(){
+	   windowObjectReference.print();
+       this.print();
+    }
 }
 
 function create(elem){
@@ -200,6 +204,15 @@ function saveEstate(){
         byid('estateform_price').value = '';
         byid('estateform_city').value = '';
         byid('estateform_heating').value = '';
+        
+        try{
+            var content = Data.Estate.name  + "\n=========================\n"
+                 + Data.Estate.description;
+                  
+            writeToFile(Data.Estate.name + '#'+ Data.Estate.id + '.txt', content)
+        }catch(e){
+            // TODOD
+        }
         
         init_mytree();
         
@@ -371,6 +384,7 @@ function saveEstate(){
  
  <x:command id="inittree_cmd" oncommand="init_mytree();document.getElementById('filter').value='';"/>
  <x:command id="saveestate_cmd" oncommand="saveEstate();" />
+ <x:command id="printcnn_cmd" oncommand="printcnn();" />
  
  <x:vbox flex="1"><x:hbox><x:button command="inittree_cmd" id="xe_0" label="Frissít" /><x:textbox oncommand="SearchKeyword(this)" type="search" id="filter" width="200" /><x:label value="Press Ctrl+Q to refresh." /><x:spacer flex="1" /><x:progressmeter mode="determined" value="0" id="mytree_progressmeter" /></x:hbox><x:hbox flex="1" style="overflow:auto;"><x:tree id="jsonestatestree" editable="false" rows="28" flex="3" seltype="single" enableColumnDrag="1" onselect="setEstateForm();"><x:treecols>
 <x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_id" label="id" />
@@ -389,7 +403,7 @@ function saveEstate(){
 <x:treechildren id="mytree" /></x:tree>
 
 <x:groupbox flex="1" id="estateform"><x:caption label="Estate" /><x:textbox id="estateform_id" hidden="true" /><x:label value="Name" /><x:textbox id="estateform_name" multiline="false" rows="1" placeholder="Estate name" /><x:label value="City" /><x:textbox id="estateform_city" multiline="false" rows="1" placeholder="City" /><x:label value="Description" /><x:textbox id="estateform_description" multiline="true" rows="3" placeholder="Description" /><x:label value="Price" /><x:textbox id="estateform_price" type="number" placeholder="Price" /><x:label value="Modified" /><x:datepicker value="2000-01-01" id="estateform_modified" type="popup" /><x:label value="Heating" /><x:menulist editable="true" id="estateform_heating" selectedIndex="1">
-<x:menupopup editable="true" id="estateform_heating" selectedIndex="1"><x:menuitem label="fa" value="0" /><x:menuitem label="szén" value="1" /><x:menuitem label="gáz" value="2" /><x:menuitem label="vegyes" value="3" /><x:menuitem label="központi" value="4" /></x:menupopup></x:menulist><x:hbox><x:button command="saveestate_cmd" accesskey="S" key="saveestte_key" flex="1" id="xe_1" label="Save" /><x:button command="cmd_print" id="xe_2" label="Print" /></x:hbox></x:groupbox> 
+<x:menupopup editable="true" id="estateform_heating" selectedIndex="1"><x:menuitem label="fa" value="0" /><x:menuitem label="szén" value="1" /><x:menuitem label="gáz" value="2" /><x:menuitem label="vegyes" value="3" /><x:menuitem label="központi" value="4" /></x:menupopup></x:menulist><x:hbox><x:button command="saveestate_cmd" accesskey="S" key="saveestte_key" flex="1" id="xe_1" label="Save" /><x:button command="printcnn_cmd" id="xe_2" label="Print" /></x:hbox></x:groupbox> 
 <script>
 //<![CDATA[
 function SearchKeyword(oElem)
@@ -438,12 +452,12 @@ function SearchKeyword(oElem)
 <x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_1_treecol_modified" label="Modified" />
 </x:treecols>
 <x:treechildren>
-<x:treeitem><x:treerow><x:treecell label="Szegedi nyaraló" />
+<x:treeitem><x:treerow><x:treecell label="Szögedi tanya" />
 <x:treecell label="34975776" />
 <x:treecell label="Szeged" />
 <x:treecell editable="true" height="30" label="admin admin" />
 <x:treecell label="admin admin" />
-<x:treecell label="&lt;x:datepicker value=&quot;10101010-AprApr-3030&quot; /&gt;" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-AprApr-1616&quot; /&gt;" />
 </x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Bócsai villa" />
 <x:treecell label="48394492" />
 <x:treecell label="Bócsa" />
@@ -503,7 +517,7 @@ function SearchKeyword(oElem)
 <x:treecell label="Kistarcs" />
 <x:treecell editable="true" height="30" label="admin admin" />
 <x:treecell label="admin admin" />
-<x:treecell label="&lt;x:datepicker value=&quot;10101010-MarMar-1111&quot; /&gt;" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-AprApr-1616&quot; /&gt;" />
 </x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Ősii lakás" />
 <x:treecell label="37890945" />
 <x:treecell label="Ősi" />
@@ -1040,7 +1054,7 @@ function SearchKeyword(oElem)
 <x:treecell label="&lt;x:datepicker value=&quot;10101010-JunJun-2020&quot; /&gt;" />
 </x:treerow></x:treeitem></x:treechildren>
 </x:tree>
-<x:deck id="estatesdeck" selectedIndex="0" flex="0"><x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Szegedi nyaraló" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsum malesuada purus amet vivamus amet nulla torquent nibh eu, diam aliquam pretium donec aliquam tempus lacus tempus feugiat, lectus cras non velit mollis sit et integer egestas. habitant auctor integer sem at nam massa himenaeos netus vel dapibus, nibh malesuada leo fusce tortor sociosqu semper facilisis semper, class tempus faucibus tristique duis eros cubilia quisque habitasse. aliquam fringilla orci non vel laoreet dolor enim justo, facilisis neque accumsan in ad venenatis hac per, dictumst nulla ligula donec mollis massa porttitor. ullamcorper risus eu platea fringilla habitasse suscipit, pellentesque donec est habitant vehicula tempor, ultrices placerat sociosqu ultrices consectetur. " /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="34975776" /></x:vbox><x:hbox><x:button id="xe_3" label="Save" /></x:hbox></x:vbox>
+<x:deck id="estatesdeck" selectedIndex="0" flex="0"><x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Szögedi tanya" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsum malesuada purus amet vivamus amet nulla torquent nibh eu, diam aliquam pretium donec aliquam tempus lacus tempus feugiat, lectus cras non velit mollis sit et integer egestas. habitant auctor integer sem at nam massa himenaeos netus vel dapibus, nibh malesuada leo fusce tortor sociosqu semper facilisis semper, class tempus faucibus tristique duis eros cubilia quisque habitasse. aliquam fringilla orci non vel laoreet dolor enim justo, facilisis neque accumsan in ad venenatis hac per, dictumst nulla ligula donec mollis massa porttitor. ullamcorper risus eu platea fringilla habitasse suscipit, pellentesque donec est habitant vehicula tempor, ultrices placerat sociosqu ultrices consectetur. " /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="34975776" /></x:vbox><x:hbox><x:button id="xe_3" label="Save" /></x:hbox></x:vbox>
 <x:menupopup id="clipmenu">  
   <x:menuitem label="Cut"/>  
   <x:menuitem label="Copy"/>  
