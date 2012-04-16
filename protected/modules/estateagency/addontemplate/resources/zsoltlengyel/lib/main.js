@@ -22,7 +22,7 @@ exports.main = function() {
    
     notifications.notify({
         title: 'EstateAgency',
-        text: "Az EstateAgency program sikeresen települt. A jobb alsó sarokba található ikonnal indíthatja.",
+        text: "Az EstateAgency program sikeresen települt.",
         iconURL: "http://localhost/szakdoga/yii/images/house32.png"
     });
 	
