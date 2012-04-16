@@ -168,7 +168,7 @@ class EstateController extends EAController
     
     public function actionGenerate($num = 100){
         
-        Yii::app()->db->createCommand()->truncateTable('estates');
+        //Yii::app()->db->createCommand()->truncateTable('estates');
         
         header ('Content-type: text/plain; charset=utf-8');
         
