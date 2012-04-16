@@ -1,6 +1,0 @@
-<?php /* source file: C:\xampp\htdocs\szakdoga\yii\protected\modules\test\views\layouts\main.xul */ ?>
-<?php
-  echo '<?xml version="1.0"?>'."\n";
-  echo '<?xml-stylesheet href="chrome://global/skin" type="text/css"?>'."\n";
-  echo $content;
-?>
