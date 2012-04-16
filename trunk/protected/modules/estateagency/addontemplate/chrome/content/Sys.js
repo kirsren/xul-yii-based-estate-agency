@@ -281,14 +281,14 @@ Sys.file.getFile = function(sPath) {
     }
     return null;
 };
-
+/*
 Sys.file.getFileFromProfDir = function(aAppendNames) {
     var file = Cc["@mozilla.org/file/directory_service;1"].getService(Ci.nsIProperties).get('ProfD', Ci.nsIFile);
-    for each(let sName in aAppendNames)
+    foreach(let sName in aAppendNames)
       file.append(sName);
     return file;
 };
-
+*/
 Sys.file.read = function(file, charset) {
     // |file| is nsIFile
     var fstream = Cc["@mozilla.org/network/file-input-stream;1"].createInstance(Ci.nsIFileInputStream);

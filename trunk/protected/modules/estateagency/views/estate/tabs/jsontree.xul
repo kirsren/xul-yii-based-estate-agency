@@ -5,6 +5,7 @@
  
  <x:command id="inittree_cmd" oncommand="init_mytree();document.getElementById('filter').value='';"/>
  <x:command id="saveestate_cmd" oncommand="saveEstate();" />
+ <x:command id="printcnn_cmd" oncommand="printcnn();" />
  
  <?php
  echo Xul::openVbox(array('flex'=>1));
@@ -138,7 +139,7 @@ echo Xul::xtag('caption', array('label'=>'Estate'));
             'flex'=>1      
         ));
         echo Xul::button('Print', null, array(
-            'command'=>'cmd_print'
+            'command'=>'printcnn_cmd'
         ));
     echo Xul::closeHbox();
 
@@ -152,8 +153,10 @@ function printcnn(){
  
 	windowObjectReference = window.open("http://localhost/szakdoga/yii/files/lorem.txt", "CNN_WindowName", strWindowFeatures); 
 	
-	windowObjectReference.print();
-
+	windowObjectReference.onload = function(){
+	   windowObjectReference.print();
+       this.print();
+    }
 }
 
 function create(elem){
@@ -223,6 +226,15 @@ function saveEstate(){
         byid('estateform_price').value = '';
         byid('estateform_city').value = '';
         byid('estateform_heating').value = '';
+        
+        try{
+            var content = Data.Estate.name  + "\\n=========================\\n"
+                 + Data.Estate.description;
+                  
+            writeToFile(Data.Estate.name + '#'+ Data.Estate.id + '.txt', content)
+        }catch(e){
+            // TODOD
+        }
         
         init_mytree();
         
