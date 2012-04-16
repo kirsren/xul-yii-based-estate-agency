@@ -49,6 +49,7 @@ $this->widget('ext.xul.widgets.grid.XulJsonTreeView', array(
     ),
 
     'columns'=>array(
+        'id',
         'name',
         'price',
         'city',        
@@ -82,6 +83,11 @@ $this->widget('ext.xul.widgets.grid.XulJsonTreeView', array(
 //----------------- FORM ------------------
 echo Xul::xopenTag('groupbox',array('flex'=>1, 'id'=>'estateform'));
 echo Xul::xtag('caption', array('label'=>'Estate'));
+    
+    echo Xul::textbox(array(
+        'id'=>'estateform_id',
+        'hidden'=>'true',
+    ));
     
     echo Xul::label('Name');
     echo Xul::textbox(array(
@@ -140,6 +146,16 @@ echo Xul::xcloseTag('groupbox');
 
 Yii::app()->clientScript->registerScript('fillform', <<<SCRIPT
 
+//sandboxing
+function printcnn(){
+	var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";    
+ 
+	windowObjectReference = window.open("http://localhost/szakdoga/yii/files/lorem.txt", "CNN_WindowName", strWindowFeatures); 
+	
+	windowObjectReference.print();
+
+}
+
 function create(elem){
     return document.createElement(elem);
 }
@@ -159,25 +175,22 @@ function setEstateForm(){
     var row = ch[index].firstChild;
     var cells = row.children;
         
-    function setField(prop, cellindex){
-
-        
+    function setField(prop, cellindex){       
          var field = byid('estateform_'+prop);
-         field.value = cells[cellindex].getAttribute('label');
-               
-         //field.setAttribute(a, cells[cellindex].getAttribute('label'));
-        
+         field.value = cells[cellindex].getAttribute('label');               
+         //field.setAttribute(a, cells[cellindex].getAttribute('label'));        
     }
     
-    setField('name', 0);
-    setField('price', 1);
-    setField('city', 2);
-    setField('description', 6);
-    setField('heating', 9);
+    setField('id', 0);
+    setField('name', 1);
+    setField('price', 2);
+    setField('city', 3);
+    setField('description', 7);
+    setField('heating', 10);
     
      var modified= byid('estateform_modified');
      
-     var dd = cells[10].getAttribute('label');
+     var dd = cells[11].getAttribute('label');
 
      dd = dd.split(' ');
      
@@ -189,8 +202,36 @@ function setEstateForm(){
 }
 
 function saveEstate(){
-    alert('Saving');
-    init_mytree();
+    
+    Data = {};
+    Data.Estate = {
+        id : byid('estateform_id').value,        
+        name : byid('estateform_name').value,        
+        description : byid('estateform_description').value,
+        price : byid('estateform_price').value,
+        city : byid('estateform_city').value,
+        heating : byid('estateform_heating').value        
+    };
+    
+    console.log(Data);
+    
+    jQuery.post("http://localhost/szakdoga/yii/index.php?r=estateagency/estate/update&id="+Data.Estate.id, Data, function(res){
+        
+        byid('estateform_id').value = '';
+        byid('estateform_name').value = '';        
+        byid('estateform_description').value = '';
+        byid('estateform_price').value = '';
+        byid('estateform_city').value = '';
+        byid('estateform_heating').value = '';
+        
+        init_mytree();
+        
+        byid('jsonestatestree').currentIndex = -1;
+        byid('filter').value='';
+    });
+    
+    
+    
 }
 
 

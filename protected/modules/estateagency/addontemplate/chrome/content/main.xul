@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<!DOCTYPE overlay [
+<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd" >
+%browserDTD;
+]>
 <?xml-stylesheet href="bindings/bindings.css" type="text/css"?>
 <?xml-stylesheet href="http://localhost/szakdoga/yii/assets/913ece13/css/main.css" type="text/css"?>
 <x:window title="Estate agency"
@@ -43,48 +47,52 @@ function fill_mytree(data){
         
         
             var cell0 = document.createElement("treecell");
-            cell0.setAttribute("label", model.name);
+            cell0.setAttribute("label", model.id);
             row.appendChild(cell0);
             
             var cell1 = document.createElement("treecell");
-            cell1.setAttribute("label", model.price);
+            cell1.setAttribute("label", model.name);
             row.appendChild(cell1);
             
             var cell2 = document.createElement("treecell");
-            cell2.setAttribute("label", model.city);
+            cell2.setAttribute("label", model.price);
             row.appendChild(cell2);
             
             var cell3 = document.createElement("treecell");
-            cell3.setAttribute("label", model.agent);
+            cell3.setAttribute("label", model.city);
             row.appendChild(cell3);
             
             var cell4 = document.createElement("treecell");
-            cell4.setAttribute("label", model.client);
+            cell4.setAttribute("label", model.agent);
             row.appendChild(cell4);
             
             var cell5 = document.createElement("treecell");
-            cell5.setAttribute("label", model.created);
+            cell5.setAttribute("label", model.client);
             row.appendChild(cell5);
             
             var cell6 = document.createElement("treecell");
-            cell6.setAttribute("label", model.description);
+            cell6.setAttribute("label", model.created);
             row.appendChild(cell6);
             
             var cell7 = document.createElement("treecell");
-            cell7.setAttribute("label", model.type);
+            cell7.setAttribute("label", model.description);
             row.appendChild(cell7);
             
             var cell8 = document.createElement("treecell");
-            cell8.setAttribute("label", model.rooms);
+            cell8.setAttribute("label", model.type);
             row.appendChild(cell8);
             
             var cell9 = document.createElement("treecell");
-            cell9.setAttribute("label", model.heating);
+            cell9.setAttribute("label", model.rooms);
             row.appendChild(cell9);
             
             var cell10 = document.createElement("treecell");
-            cell10.setAttribute("label", model.modified);
+            cell10.setAttribute("label", model.heating);
             row.appendChild(cell10);
+            
+            var cell11 = document.createElement("treecell");
+            cell11.setAttribute("label", model.modified);
+            row.appendChild(cell11);
             ;
         
         item.appendChild(row);
@@ -144,25 +152,22 @@ function setEstateForm(){
     var row = ch[index].firstChild;
     var cells = row.children;
         
-    function setField(prop, cellindex){
-
-        
+    function setField(prop, cellindex){       
          var field = byid('estateform_'+prop);
-         field.value = cells[cellindex].getAttribute('label');
-               
-         //field.setAttribute(a, cells[cellindex].getAttribute('label'));
-        
+         field.value = cells[cellindex].getAttribute('label');               
+         //field.setAttribute(a, cells[cellindex].getAttribute('label'));        
     }
     
-    setField('name', 0);
-    setField('price', 1);
-    setField('city', 2);
-    setField('description', 6);
-    setField('heating', 9);
+    setField('id', 0);
+    setField('name', 1);
+    setField('price', 2);
+    setField('city', 3);
+    setField('description', 7);
+    setField('heating', 10);
     
      var modified= byid('estateform_modified');
      
-     var dd = cells[10].getAttribute('label');
+     var dd = cells[11].getAttribute('label');
 
      dd = dd.split(' ');
      
@@ -174,18 +179,47 @@ function setEstateForm(){
 }
 
 function saveEstate(){
-    alert('Saving');
-    init_mytree();
+    
+    Data = {};
+    Data.Estate = {
+        id : byid('estateform_id').value,        
+        name : byid('estateform_name').value,        
+        description : byid('estateform_description').value,
+        price : byid('estateform_price').value,
+        city : byid('estateform_city').value,
+        heating : byid('estateform_heating').value        
+    };
+    
+    console.log(Data);
+    
+    jQuery.post("http://localhost/szakdoga/yii/index.php?r=estateagency/estate/update&id="+Data.Estate.id, Data, function(res){
+        
+        byid('estateform_id').value = '';
+        byid('estateform_name').value = '';        
+        byid('estateform_description').value = '';
+        byid('estateform_price').value = '';
+        byid('estateform_city').value = '';
+        byid('estateform_heating').value = '';
+        
+        init_mytree();
+        
+        byid('jsonestatestree').currentIndex = -1;
+        byid('filter').value='';
+    });
+    
+    
+    
 }
 
 
  //]]> 
 </script>
 
-       
+
+
+        
 <commandset xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <command id="help_cmd" oncommand="alert('Help!')" />
-    <command id="cmd_print" oncommand="printcnn();" />
 </commandset>
 
 <keyset xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
@@ -339,7 +373,8 @@ function saveEstate(){
  <x:command id="saveestate_cmd" oncommand="saveEstate();" />
  
  <x:vbox flex="1"><x:hbox><x:button command="inittree_cmd" id="xe_0" label="Frissít" /><x:textbox oncommand="SearchKeyword(this)" type="search" id="filter" width="200" /><x:label value="Press Ctrl+Q to refresh." /><x:spacer flex="1" /><x:progressmeter mode="determined" value="0" id="mytree_progressmeter" /></x:hbox><x:hbox flex="1" style="overflow:auto;"><x:tree id="jsonestatestree" editable="false" rows="28" flex="3" seltype="single" enableColumnDrag="1" onselect="setEstateForm();"><x:treecols>
-<x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_name" label="name" />
+<x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_id" label="id" />
+<x:splitter class="tree-splitter" /><x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_name" label="name" />
 <x:splitter class="tree-splitter" /><x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_price" label="price" />
 <x:splitter class="tree-splitter" /><x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_city" label="city" />
 <x:splitter class="tree-splitter" /><x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_0_treecol_Agent" label="Agent" />
@@ -353,7 +388,7 @@ function saveEstate(){
 </x:treecols>
 <x:treechildren id="mytree" /></x:tree>
 
-<x:groupbox flex="1" id="estateform"><x:caption label="Estate" /><x:label value="Name" /><x:textbox id="estateform_name" multiline="false" rows="1" placeholder="Estate name" /><x:label value="City" /><x:textbox id="estateform_city" multiline="false" rows="1" placeholder="City" /><x:label value="Description" /><x:textbox id="estateform_description" multiline="true" rows="3" placeholder="Description" /><x:label value="Price" /><x:textbox id="estateform_price" type="number" placeholder="Price" /><x:label value="Modified" /><x:datepicker value="2000-01-01" id="estateform_modified" type="popup" /><x:label value="Heating" /><x:menulist editable="true" id="estateform_heating" selectedIndex="1">
+<x:groupbox flex="1" id="estateform"><x:caption label="Estate" /><x:textbox id="estateform_id" hidden="true" /><x:label value="Name" /><x:textbox id="estateform_name" multiline="false" rows="1" placeholder="Estate name" /><x:label value="City" /><x:textbox id="estateform_city" multiline="false" rows="1" placeholder="City" /><x:label value="Description" /><x:textbox id="estateform_description" multiline="true" rows="3" placeholder="Description" /><x:label value="Price" /><x:textbox id="estateform_price" type="number" placeholder="Price" /><x:label value="Modified" /><x:datepicker value="2000-01-01" id="estateform_modified" type="popup" /><x:label value="Heating" /><x:menulist editable="true" id="estateform_heating" selectedIndex="1">
 <x:menupopup editable="true" id="estateform_heating" selectedIndex="1"><x:menuitem label="fa" value="0" /><x:menuitem label="szén" value="1" /><x:menuitem label="gáz" value="2" /><x:menuitem label="vegyes" value="3" /><x:menuitem label="központi" value="4" /></x:menupopup></x:menulist><x:hbox><x:button command="saveestate_cmd" accesskey="S" key="saveestte_key" flex="1" id="xe_1" label="Save" /><x:button command="cmd_print" id="xe_2" label="Print" /></x:hbox></x:groupbox> 
 <script>
 //<![CDATA[
@@ -403,12 +438,12 @@ function SearchKeyword(oElem)
 <x:treecol flex="1" sortActive="true" sortDirection="descending" id="tree_xe_1_treecol_modified" label="Modified" />
 </x:treecols>
 <x:treechildren>
-<x:treeitem><x:treerow><x:treecell label="Budapesti nyaraló" />
+<x:treeitem><x:treerow><x:treecell label="Budapesti nyaralóóóó" />
 <x:treecell label="27695303" />
 <x:treecell label="Budapest" />
 <x:treecell editable="true" height="30" label="admin admin" />
 <x:treecell label="admin admin" />
-<x:treecell label="&lt;x:datepicker value=&quot;10101010-JunJun-0101&quot; /&gt;" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-AprApr-1616&quot; /&gt;" />
 </x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Győri kertes ház" />
 <x:treecell label="34394729" />
 <x:treecell label="Győr" />
@@ -517,12 +552,12 @@ function SearchKeyword(oElem)
 <x:treecell editable="true" height="30" label="admin admin" />
 <x:treecell label="admin admin" />
 <x:treecell label="&lt;x:datepicker value=&quot;10101010-JunJun-3030&quot; /&gt;" />
-</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Kistarcsi lakás" />
-<x:treecell label="28532939" />
-<x:treecell label="Kistarcs" />
+</x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Szegedi tanya" />
+<x:treecell label="10000" />
+<x:treecell label="Szöged" />
 <x:treecell editable="true" height="30" label="admin admin" />
 <x:treecell label="admin admin" />
-<x:treecell label="&lt;x:datepicker value=&quot;10101010-OctOct-0909&quot; /&gt;" />
+<x:treecell label="&lt;x:datepicker value=&quot;12121212-AprApr-1616&quot; /&gt;" />
 </x:treerow></x:treeitem><x:treeitem><x:treerow><x:treecell label="Ősii lakás" />
 <x:treecell label="37890945" />
 <x:treecell label="Ősi" />
@@ -1005,7 +1040,7 @@ function SearchKeyword(oElem)
 <x:treecell label="&lt;x:datepicker value=&quot;10101010-FebFeb-2626&quot; /&gt;" />
 </x:treerow></x:treeitem></x:treechildren>
 </x:tree>
-<x:deck id="estatesdeck" selectedIndex="0" flex="0"><x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Budapesti nyaraló" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsum hac non odio fringilla class aliquam, metus ipsum lorem luctus pharetra. dictum vehicula tempus in venenatis gravida ut gravida proin, orci quis sed platea mi quisque hendrerit semper, hendrerit facilisis ante sapien faucibus ligula commodo. vestibulum rutrum pretium varius sem aliquet himenaeos dolor cursus, nunc habitasse aliquam ut curabitur ipsum luctus ut rutrum, odio condimentum donec suscipit molestie est etiam. sit rutrum dui nostra sem aliquet conubia nullam sollicitudin rhoncus venenatis, vivamus rhoncus netus risus tortor non mauris turpis eget integer, nibh dolor commodo venenatis ut molestie semper adipiscing amet. cras class donec sapien malesuada, auctor sapien arcu. " /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="27695303" /></x:vbox><x:hbox><x:button id="xe_3" label="Save" /></x:hbox></x:vbox>
+<x:deck id="estatesdeck" selectedIndex="0" flex="0"><x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Budapesti nyaralóóóó" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsum hac non odio fringilla class aliquam, metus ipsum lorem luctus pharetra. dictum vehicula tempus in venenatis gravida ut gravida proin, orci quis sed platea mi quisque hendrerit semper, hendrerit facilisis ante sapien faucibus ligula commodo. vestibulum rutrum pretium varius sem aliquet himenaeos dolor cursus, nunc habitasse aliquam ut curabitur ipsum luctus ut rutrum, odio condimentum donec suscipit molestie est etiam. sit rutrum dui nostra sem aliquet conubia nullam sollicitudin rhoncus venenatis, vivamus rhoncus netus risus tortor non mauris turpis eget integer, nibh dolor commodo venenatis ut molestie semper adipiscing amet. cras class donec sapien malesuada, auctor sapien arcu. " /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="27695303" /></x:vbox><x:hbox><x:button id="xe_3" label="Save" /></x:hbox></x:vbox>
 <x:menupopup id="clipmenu">  
   <x:menuitem label="Cut"/>  
   <x:menuitem label="Copy"/>  
@@ -1214,7 +1249,7 @@ function SearchKeyword(oElem)
 
 
 </x:groupbox>
-<x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Kistarcsi lakás" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsum urna dictum vehicula tempus in, venenatis gravida ut gravida proin orci quis, sed platea mi quisque hendrerit. semper hendrerit facilisis ante sapien faucibus ligula commodo vestibulum rutrum pretium varius sem aliquet himenaeos dolor, cursus nunc habitasse aliquam ut curabitur ipsum luctus ut rutrum odio condimentum donec suscipit. molestie est etiam sit rutrum dui nostra, sem aliquet conubia nullam sollicitudin rhoncus venenatis, vivamus rhoncus netus risus tortor. non mauris turpis eget integer nibh dolor commodo venenatis ut, molestie semper adipiscing amet cras class donec sapien malesuada, auctor sapien arcu inceptos aenean consequat metus litora. mattis vivamus feugiat arcu, adipiscing. " /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="28532939" /></x:vbox><x:hbox><x:button id="xe_22" label="Save" /></x:hbox></x:vbox>
+<x:groupbox flex="1"><x:vbox flex="1"><x:vbox><x:label controller="Estate_name" class="required" value="Name" /><input size="60" maxlength="255" name="Estate[name]" id="Estate_name" type="text" value="Szegedi tanya" /></x:vbox><x:vbox><x:label controller="Estate_description" class="required" value="Description" /><input rows="6" cols="50" name="Estate[description]" id="Estate_description" type="text" value="lorem ipsumi" /></x:vbox><x:vbox><x:label controller="Estate_price" class="required" value="Price" /><x:textbox min="1" max="1000000" name="Estate[price]" id="Estate_price" type="number" value="10000" /></x:vbox><x:hbox><x:button id="xe_22" label="Save" /></x:hbox></x:vbox>
 <x:menupopup id="clipmenu">  
   <x:menuitem label="Cut"/>  
   <x:menuitem label="Copy"/>  
