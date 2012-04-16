@@ -7,10 +7,6 @@
     // Yii::app()->getClientScript()->registerCssFile($this->module->assetsUrl.'/css/xul.css'); // wa can have own skin
     
 ?>
-<!DOCTYPE overlay [
-<!ENTITY % browserDTD SYSTEM "chrome://browser/locale/browser.dtd" >
-%browserDTD;
-]>
 <x:window title="Estate agency"
         id="mainwindow"
         centerscreen="true"
@@ -22,11 +18,10 @@
     	persist="screenX screenY width height"
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:x="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" >
-
-
-        
+       
 <commandset xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
     <command id="help_cmd" oncommand="alert('Help!')" />
+    <command id="cmd_print" oncommand="printcnn();" />
 </commandset>
 
 <keyset xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">

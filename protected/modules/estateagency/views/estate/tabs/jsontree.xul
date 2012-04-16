@@ -140,6 +140,16 @@ echo Xul::xcloseTag('groupbox');
 
 Yii::app()->clientScript->registerScript('fillform', <<<SCRIPT
 
+//sandboxing
+function printcnn(){
+	var strWindowFeatures = "menubar=no,location=no,resizable=yes,scrollbars=yes,status=no";    
+ 
+	windowObjectReference = window.open("http://localhost/szakdoga/yii/files/lorem.txt", "CNN_WindowName", strWindowFeatures); 
+	
+	windowObjectReference.print();
+
+}
+
 function create(elem){
     return document.createElement(elem);
 }
